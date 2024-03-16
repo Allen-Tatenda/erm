@@ -1,0 +1,126 @@
+import 'package:erm/widgets/navigation_method.dart';
+import 'package:flutter/material.dart';
+
+class RiskRegisterHero extends StatelessWidget {
+  const RiskRegisterHero({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      margin: const EdgeInsets.only(top: 10),
+      width: MediaQuery.of(context).size.width,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Positioned.fill(
+              child: Image.network(
+            'https://images.unsplash.com/photo-1582441814869-a262426017f9?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            fit: BoxFit.cover,
+          )),
+          Positioned(
+            bottom: 0,
+            child: Container(
+              height: 10,
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                Color.fromARGB(255, 5, 95, 168),
+                Colors.blueAccent,
+                Colors.lightGreenAccent
+              ])),
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            child: Container(
+              decoration: const BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.elliptical(400, 444))),
+              child: const Padding(
+                padding: EdgeInsets.only(left: 60, top: 10, right: 80),
+                child: Text(
+                  'Risk Register',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 20,
+            child: Container(
+              width: 50,
+              height: 50,
+              child: Image.asset('assets/icons/logo-transparent.png',
+                  fit: BoxFit.cover),
+            ),
+          ),
+          Positioned(
+              right: 20,
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        gradient: LinearGradient(colors: [
+                          Colors.lightBlue.shade900,
+                          Colors.blueAccent
+                        ])),
+                    child: InkWell(
+                      onTap: () {
+                        navigationStream.sink.add(0);
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.fromLTRB(10, 2, 20, 2),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.chevron_left,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              'Navigation',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 6,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        gradient: LinearGradient(colors: [
+                          Colors.lightBlue.shade900,
+                          Colors.blueAccent
+                        ])),
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(20, 2, 10, 2),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Treatments',
+                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          ),
+                          Icon(
+                            Icons.chevron_right,
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ))
+        ],
+      ),
+    );
+  }
+}
