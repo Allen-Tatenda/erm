@@ -4,6 +4,7 @@ import 'package:erm/Pages/riskRegister/loss_of_key_employee/risk_analysis_and_ev
 import 'package:flutter/material.dart';
 
 import 'widgets/consequences.dart';
+import 'widgets/risk_rating_widget.dart';
 
 class RiskRatingColumn extends StatelessWidget {
   RiskRatingColumn({super.key});
@@ -25,6 +26,7 @@ class RiskRatingColumn extends StatelessWidget {
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     },
   ];
+  showEditing(){}
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +47,12 @@ class RiskRatingColumn extends StatelessWidget {
                         color: Colors.white,
                         border: Border.all(width: 1, color: Colors.black12),
                         borderRadius: BorderRadius.circular(4)),
-                    child: const Column(
+                    child:  Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         RiskInformationHeader(
                           heading: 'RISK RATING',
+                          logic: true,
                         ),
                         RiskInfoSubHeadingAndText(
                             subheading: 'LIKELIHOOD', text: '4'),
@@ -59,28 +62,7 @@ class RiskRatingColumn extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Container(
-                    width: ((MediaQuery.of(context).size.width / 3) / 2) - 26,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(width: 1, color: Colors.black12),
-                        borderRadius: BorderRadius.circular(4)),
-                    child: const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RiskInformationHeader(
-                          heading: 'RISK RATING',
-                        ),
-                        RiskInfoSubHeadingAndText(
-                            subheading: 'LIKELIHOOD', text: '4'),
-                        RiskInfoSubHeadingAndText(
-                            subheading: 'IMPACT', text: '4'),
-                      ],
-                    ),
-                  ),
-                ),
+                RiskRatingWidget(),
               ],
             ),
             Consequences(data: data),
@@ -89,3 +71,4 @@ class RiskRatingColumn extends StatelessWidget {
     );
   }
 }
+

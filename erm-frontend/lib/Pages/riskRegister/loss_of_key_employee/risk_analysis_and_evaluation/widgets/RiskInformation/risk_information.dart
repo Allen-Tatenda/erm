@@ -7,6 +7,7 @@ class RiskInformation extends StatelessWidget {
   const RiskInformation({
     super.key,
   });
+  showEditing(){}
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +22,9 @@ class RiskInformation extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const RiskInformationHeader(
+             RiskInformationHeader(
               heading: 'RISK INFORMATION',
+              logic: true,
             ),
             const RiskInfoSubHeadingAndText(
               subheading: 'EDIT RATINGS',

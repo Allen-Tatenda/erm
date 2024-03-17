@@ -1,13 +1,20 @@
 import 'package:erm/widgets/dropdown_listTile.dart';
 import 'package:flutter/material.dart';
 
-class RiskInformationHeader extends StatelessWidget {
-  const RiskInformationHeader({
+class RiskInformationHeader extends StatefulWidget {
+   RiskInformationHeader({
     super.key,
-    required this.heading,
+    required this.heading, required this.logic,
   });
   final String heading;
+   bool logic;
 
+  @override
+  State<RiskInformationHeader> createState() => _RiskInformationHeaderState();
+}
+
+class _RiskInformationHeaderState extends State<RiskInformationHeader> {
+  bool showEditing = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +28,7 @@ class RiskInformationHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              heading,
+              widget.heading,
               style: const TextStyle(
                 fontSize: 20,
                 fontFamily: 'BebasNeue',
@@ -29,13 +36,21 @@ class RiskInformationHeader extends StatelessWidget {
                 color: Color.fromARGB(255, 0, 22, 39),
               ),
             ),
-            const Row(
+           Row(
               children: [
-                Icon(
-                  Icons.edit,
-                  color: Color.fromARGB(255, 0, 22, 39),
+                InkWell(
+                  onTap: (){
+                    setState(() {
+                      showEditing = true;
+                      print(showEditing);
+                    });
+                  },
+                  child: const Icon(
+                    Icons.edit,
+                    color: Color.fromARGB(255, 0, 22, 39),
+                  ),
                 ),
-                DropDownListTile(),
+                const DropDownListTile(),
               ],
             )
           ],
