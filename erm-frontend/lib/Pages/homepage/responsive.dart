@@ -11,9 +11,9 @@ class HomePageResponsive extends StatelessWidget {
       var width = MediaQuery.of(context).size.width;
       print(width);
       if (width < 672) {
-        return MobileHomePage();
+        return const MobileHomePage();
       }
-      return HomePage();
+      return const HomePage();
     });
   }
 }

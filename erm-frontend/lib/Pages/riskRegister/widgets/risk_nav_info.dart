@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RiskNavInfo extends StatelessWidget {
-  RiskNavInfo({
+  const RiskNavInfo({
     super.key,
     required this.header,
     required this.value,
@@ -14,13 +14,53 @@ class RiskNavInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return LayoutBuilder(builder: (context, widget) {
+      var width = MediaQuery.of(context).size.width;
+      print(width);
+      if (width < 672) {
+return SizedBox(
+      width: (MediaQuery.of(context).size.width / 2) - 32,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            header,
+            style: const TextStyle(
+                fontWeight: FontWeight.w900, color: Colors.grey, fontSize: 14),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                value,
+                style: const TextStyle(
+                    fontWeight: FontWeight.w900,
+                    color: Colors.black87,
+                    fontSize: 40),
+              ),
+              const SizedBox(
+                width: 4,
+              ),
+              Text(
+                trailing,
+                style: const TextStyle(
+                    fontWeight: FontWeight.w900,
+                    color: Colors.grey,
+                    fontSize: 14),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+      }
+      return SizedBox(
       width: (MediaQuery.of(context).size.width / 6) - 14,
       child: Column(
         children: [
           Text(
             header,
-            style: TextStyle(
+            style: const TextStyle(
                 fontWeight: FontWeight.w900, color: Colors.grey, fontSize: 14),
           ),
           Row(
@@ -33,12 +73,12 @@ class RiskNavInfo extends StatelessWidget {
                     color: Colors.black87,
                     fontSize: MediaQuery.of(context).size.width / 23),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 4,
               ),
               Text(
                 trailing,
-                style: TextStyle(
+                style: const TextStyle(
                     fontWeight: FontWeight.w900,
                     color: Colors.grey,
                     fontSize: 14),
@@ -48,5 +88,7 @@ class RiskNavInfo extends StatelessWidget {
         ],
       ),
     );
+      });
+    
   }
 }

@@ -18,9 +18,9 @@ class _MobileHomePageState extends State<MobileHomePage> {
           var width = MediaQuery.of(context).size.width;
           print(width);
           if (width < 672) {
-            return SizedBox.shrink();
+            return const SizedBox.shrink();
           }
-          return Container(
+          return SizedBox(
               height: MediaQuery.of(context).size.height - 300,
               child: const HeroWidget());
         }),

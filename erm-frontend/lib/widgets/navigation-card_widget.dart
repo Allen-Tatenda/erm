@@ -24,7 +24,7 @@ class NavigationCardWidget extends StatelessWidget {
           var width = MediaQuery.of(context).size.width;
           print(width);
           if (width < 672) {
-            return Container(
+            return SizedBox(
               width: MediaQuery.of(context).size.width / 2 - 20,
               height: 300,
               child: Card(
@@ -34,17 +34,17 @@ class NavigationCardWidget extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(4, 20, 4, 20),
                   child: Column(
                     children: [
-                      Container(
+                      SizedBox(
                         width: 60,
                         height: 60,
                         child: Image.asset(image),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
                       Text(
                         name,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w900,
                             fontSize: 14),
@@ -55,7 +55,7 @@ class NavigationCardWidget extends StatelessWidget {
               ),
             );
           }
-          return Container(
+          return SizedBox(
             width: MediaQuery.of(context).size.width / 8 - 20,
             child: Card(
               elevation: 7,
@@ -64,17 +64,17 @@ class NavigationCardWidget extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(4, 20, 4, 20),
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       width: 100,
                       height: 100,
                       child: Image.asset(image),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Text(
                       name,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w900,
                           fontSize: 14),

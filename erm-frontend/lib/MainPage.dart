@@ -1,11 +1,10 @@
-import 'package:erm/Pages/homepage/home_page.dart';
-import 'package:erm/Pages/riskRegister/loss_of_key_employee/loss_of_key_employee.dart';
-import 'package:erm/Pages/riskRegister/risk_register.dart';
 import 'package:erm/widgets/navigation_method.dart';
 import 'package:flutter/material.dart';
 import 'Pages/homepage/widgets/app_bar.dart';
 
 class Entrance extends StatefulWidget {
+  const Entrance({super.key});
+
   @override
   State<Entrance> createState() => _EntranceState();
 }
@@ -76,9 +75,9 @@ class _EntranceState extends State<Entrance> {
                     builder: (context, snapshot) {
                       print(snapshot.data);
                       if (snapshot.hasData) {
-                        //return myPages[snapshot.data!];
+                        return myPages[snapshot.data!];
                         //return RiskRegisterPage();
-                        return const LossOfKeyEmployee();
+                        //return const LossOfKeyEmployee();
                       }
                       return const SizedBox.shrink();
                     })),

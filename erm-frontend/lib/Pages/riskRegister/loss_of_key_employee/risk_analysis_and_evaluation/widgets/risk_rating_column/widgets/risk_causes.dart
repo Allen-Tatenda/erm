@@ -21,7 +21,7 @@ class RiskCausesWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(4)),
       child: Column(
         children: [
-          ConsequencesHeader(heading: 'RISK CAUSES'),
+          const ConsequencesHeader(heading: 'RISK CAUSES'),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -65,7 +65,7 @@ class RiskCausesWidget extends StatelessWidget {
                             cells: [
                               DataCell(Text(entry.value['name']!)),
                               DataCell(Text(entry.value['description']!)),
-                              DataCell(
+                              const DataCell(
                                 DropDownListTile(),
                               ),
                             ],

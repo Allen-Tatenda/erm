@@ -77,7 +77,7 @@ class MyPieChartState extends State<MyPieChart> {
       key: ValueKey(key),
       dataMap: dataMap,
       animationDuration: const Duration(milliseconds: 800),
-      chartLegendSpacing: _chartLegendSpacing!,
+      chartLegendSpacing: _chartLegendSpacing,
       chartRadius: math.min(MediaQuery.of(context).size.width / 3.2, 40),
       colorList: colorList,
       initialAngleInDegree: 0,
@@ -86,7 +86,7 @@ class MyPieChartState extends State<MyPieChart> {
       centerWidget: null,
       legendOptions: LegendOptions(
         showLegendsInRow: _showLegendsInRow,
-        legendPosition: _legendPosition!,
+        legendPosition: _legendPosition,
         showLegends: false,
         legendShape: _legendShape == LegendShape.circle
             ? BoxShape.circle
@@ -110,15 +110,19 @@ class MyPieChartState extends State<MyPieChart> {
       ],
       baseChartColor: Colors.transparent,
     );
-
-    return SizedBox(
-      width: (MediaQuery.of(context).size.width / 6) - 14,
+String header = widget.header;
+     return LayoutBuilder(builder: (context, widget) {
+      var width = MediaQuery.of(context).size.width;
+      print(width);
+      if (width < 672) {
+       return SizedBox(
+      width: (MediaQuery.of(context).size.width / 2) - 32,
       height: 140,
       child: Column(
         children: [
           Text(
-            widget.header,
-            style: TextStyle(
+            header,
+            style: const TextStyle(
                 fontWeight: FontWeight.w900, color: Colors.grey, fontSize: 14),
           ),
           LayoutBuilder(
@@ -153,5 +157,51 @@ class MyPieChartState extends State<MyPieChart> {
         ],
       ),
     );
+      }
+       return SizedBox(
+      width: (MediaQuery.of(context).size.width / 6) - 14,
+      height: 140,
+      child: Column(
+        children: [
+          Text(
+            header,
+            style: const TextStyle(
+                fontWeight: FontWeight.w900, color: Colors.grey, fontSize: 14),
+          ),
+          LayoutBuilder(
+            builder: (_, constraints) {
+              if (constraints.maxWidth >= 600) {
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      flex: 3,
+                      fit: FlexFit.tight,
+                      child: chart,
+                    ),
+                  ],
+                );
+              } else {
+                return SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                          vertical: 32,
+                        ),
+                        child: chart,
+                      ),
+                    ],
+                  ),
+                );
+              }
+            },
+          ),
+        ],
+      ),
+    );
+    });
+
+    
   }
 }

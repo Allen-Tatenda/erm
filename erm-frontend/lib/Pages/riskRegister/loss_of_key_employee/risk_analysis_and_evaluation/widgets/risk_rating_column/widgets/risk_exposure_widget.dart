@@ -4,16 +4,16 @@ import '../../../../../../../widgets/dropdown_listTile.dart';
 
 import '../../RiskInformation/widgets/risk_info_subheading_text.dart';
 
-class RiskRatingWidget extends StatefulWidget {
-  const RiskRatingWidget({
+class RiskExposureWidget extends StatefulWidget {
+  const RiskExposureWidget({
     super.key,
   });
 
   @override
-  State<RiskRatingWidget> createState() => _RiskRatingWidgetState();
+  State<RiskExposureWidget> createState() => _RiskExposureWidgetState();
 }
 
-class _RiskRatingWidgetState extends State<RiskRatingWidget> {
+class _RiskExposureWidgetState extends State<RiskExposureWidget> {
   bool showEditing = false;
 
   bool isEditingShown = false;
@@ -47,7 +47,7 @@ class _RiskRatingWidgetState extends State<RiskRatingWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              'RISK RATING',
+              'RISK EXPOSURE',
               style: TextStyle(
                 fontSize: 20,
                 fontFamily: 'BebasNeue',
@@ -120,7 +120,7 @@ class _RiskRatingWidgetState extends State<RiskRatingWidget> {
                         ],
                       ),
                       const Text(
-                            'LIKELIHOOD',
+                            'RISK IMPACT',
                             style: TextStyle(
                   fontSize: 16,
                   fontFamily: 'BebasNeue',
@@ -139,7 +139,7 @@ class _RiskRatingWidgetState extends State<RiskRatingWidget> {
                       const SizedBox(height: 10,),
                   
                         const Text(
-                            'IMPACT',
+                            'RISK EXPOSURE',
                             style: TextStyle(
                   fontSize: 16,
                   fontFamily: 'BebasNeue',

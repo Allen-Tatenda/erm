@@ -108,7 +108,7 @@ class _RiskReportsState extends State<RiskReports> {
                     padding: const EdgeInsets.only(left: 8),
                     child: Text(
                       widget.widgetHeader,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.w900,
                         color: Colors.black,
                         fontSize: 16,

@@ -1,9 +1,8 @@
-import 'package:erm/Pages/riskRegister/loss_of_key_employee/risk_analysis_and_evaluation/widgets/RiskInformation/widgets/risk-infomation_header.dart';
-import 'package:erm/Pages/riskRegister/loss_of_key_employee/risk_analysis_and_evaluation/widgets/RiskInformation/widgets/risk_info_subheading_text.dart';
 import 'package:erm/Pages/riskRegister/loss_of_key_employee/risk_analysis_and_evaluation/widgets/risk_rating_column/widgets/risk_causes.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/consequences.dart';
+import 'widgets/risk_exposure_widget.dart';
 import 'widgets/risk_rating_widget.dart';
 
 class RiskRatingColumn extends StatelessWidget {
@@ -32,37 +31,15 @@ class RiskRatingColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
+      child: SizedBox(
           width: (MediaQuery.of(context).size.width / 3) - 36,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: Container(
-                    width: ((MediaQuery.of(context).size.width / 3) / 2) - 26,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(width: 1, color: Colors.black12),
-                        borderRadius: BorderRadius.circular(4)),
-                    child:  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RiskInformationHeader(
-                          heading: 'RISK RATING',
-                          logic: true,
-                        ),
-                        RiskInfoSubHeadingAndText(
-                            subheading: 'LIKELIHOOD', text: '4'),
-                        RiskInfoSubHeadingAndText(
-                            subheading: 'IMPACT', text: '4'),
-                      ],
-                    ),
-                  ),
-                ),
+              children: [             
                 RiskRatingWidget(),
+                RiskExposureWidget(),
               ],
             ),
             Consequences(data: data),

@@ -13,7 +13,7 @@ class LossOfKeyContainedTabBar extends StatefulWidget {
 class _LossOfKeyContainedTabBarState extends State<LossOfKeyContainedTabBar> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height - 130,
       child: ContainedTabBarView(
@@ -69,7 +69,7 @@ class _LossOfKeyContainedTabBarState extends State<LossOfKeyContainedTabBar> {
             unselectedLabelColor: Colors.red,
             isScrollable: true),
         views: [
-          RiskAnalysisAndEvaluation(),
+          const RiskAnalysisAndEvaluation(),
           Container(color: Colors.green),
           Container(color: Colors.red),
           Container(color: Colors.green),

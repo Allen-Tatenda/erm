@@ -21,7 +21,7 @@ class Consequences extends StatelessWidget {
           borderRadius: BorderRadius.circular(4)),
       child: Column(
         children: [
-          ConsequencesHeader(heading: 'CONSEQUENCES'),
+          const ConsequencesHeader(heading: 'CONSEQUENCES'),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -65,7 +65,7 @@ class Consequences extends StatelessWidget {
                             cells: [
                               DataCell(Text(entry.value['name']!)),
                               DataCell(Text(entry.value['description']!)),
-                              DataCell(
+                              const DataCell(
                                 DropDownListTile(),
                               ),
                             ],

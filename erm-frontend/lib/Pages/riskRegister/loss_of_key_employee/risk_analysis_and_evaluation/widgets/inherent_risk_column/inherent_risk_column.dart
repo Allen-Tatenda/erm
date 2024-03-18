@@ -1,5 +1,3 @@
-import 'package:erm/Pages/riskRegister/loss_of_key_employee/risk_analysis_and_evaluation/widgets/RiskInformation/widgets/risk-infomation_header.dart';
-import 'package:erm/Pages/riskRegister/loss_of_key_employee/risk_analysis_and_evaluation/widgets/RiskInformation/widgets/risk_info_subheading_text.dart';
 import 'package:erm/Pages/riskRegister/loss_of_key_employee/risk_analysis_and_evaluation/widgets/risk_rating_column/widgets/risk_causes.dart';
 import 'package:erm/Pages/riskRegister/widgets/heat_map.dart';
 import 'package:flutter/material.dart';
@@ -29,11 +27,11 @@ class InherentRiskColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
+      child: SizedBox(
           width: (MediaQuery.of(context).size.width / 3) - 36,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            HeatMap(
+            const HeatMap(
               heading: 'INHERENT RISK',
             ),
             RiskCausesWidget(data: data)

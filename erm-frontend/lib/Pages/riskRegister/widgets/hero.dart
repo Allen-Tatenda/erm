@@ -16,8 +16,8 @@ class RiskRegisterHero extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Positioned.fill(
-              child: Image.network(
-            'https://images.unsplash.com/photo-1582441814869-a262426017f9?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+              child: Image.asset(
+            'assets/img/bg.jpg',
             fit: BoxFit.cover,
           )),
           Positioned(
@@ -51,7 +51,7 @@ class RiskRegisterHero extends StatelessWidget {
           ),
           Positioned(
             left: 20,
-            child: Container(
+            child: SizedBox(
               width: 50,
               height: 50,
               child: Image.asset('assets/icons/logo-transparent.png',
@@ -91,7 +91,7 @@ class RiskRegisterHero extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 6,
                   ),
                   Container(

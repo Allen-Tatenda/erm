@@ -21,11 +21,11 @@ class RiskByDivision extends StatelessWidget {
             child: Row(
               children: [
                 SizedBox(
+                  width: 90,
                   child: Text(
                     'data',
                     style: TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
                   ),
-                  width: 90,
                 ),
                 SizedBox(width: 420 - 150, child: RiskProgressBar()),
               ],

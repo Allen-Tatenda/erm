@@ -13,13 +13,13 @@ class RisksTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width - 500,
-      margin: EdgeInsets.only(top: 19),
+      margin: const EdgeInsets.only(top: 19),
       decoration: BoxDecoration(
           border: Border.all(width: 1, color: Colors.black12),
           borderRadius: BorderRadius.circular(4)),
       child: SingleChildScrollView(
         child: DataTable(
-          decoration: BoxDecoration(color: Colors.white70),
+          decoration: const BoxDecoration(color: Colors.white70),
           // Columns definition
           columns: const [
             DataColumn(
@@ -84,17 +84,17 @@ class RisksTable extends StatelessWidget {
                       )),
                       DataCell(Text(
                         entry.value['Risk']!,
-                        style: TextStyle(fontSize: 12),
+                        style: const TextStyle(fontSize: 12),
                       )),
                       DataCell(Text(
                         entry.value['Risk Description']!,
-                        style: TextStyle(fontSize: 12),
+                        style: const TextStyle(fontSize: 12),
                       )),
                       DataCell(Text(
                         entry.value['Risk Owner']!,
-                        style: TextStyle(fontSize: 12),
+                        style: const TextStyle(fontSize: 12),
                       )),
-                      DataCell(DropDownListTile()),
+                      const DataCell(DropDownListTile()),
                     ],
                     color: MaterialStateProperty.resolveWith<Color>(
                         (Set<MaterialState> states) {

@@ -13,11 +13,11 @@ class RiskInfoSubHeadingAndText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
           subheading,
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 16,
               fontFamily: 'BebasNeue',
               fontWeight: FontWeight.bold,
@@ -25,7 +25,7 @@ class RiskInfoSubHeadingAndText extends StatelessWidget {
         ),
         Text(
           text,
-          style: TextStyle(fontSize: 12, color: Colors.black87),
+          style: const TextStyle(fontSize: 12, color: Colors.black87),
         )
       ]),
     );

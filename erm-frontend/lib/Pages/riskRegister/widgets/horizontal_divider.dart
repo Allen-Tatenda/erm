@@ -7,7 +7,7 @@ class HorizontalDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 100,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

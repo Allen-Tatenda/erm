@@ -16,28 +16,75 @@ class RiskRegisterPage extends StatelessWidget {
         const SizedBox(
           height: 18,
         ),
-        Row(
+       LayoutBuilder(builder: (context, widget) {
+      var width = MediaQuery.of(context).size.width;
+      print(width);
+      if (width < 672) {
+               return const Column(
           children: [
-            RiskNavInfo(header: 'Total Risks', value: '55', trailing: ''),
-            const HorizontalDivider(),
-            RiskNavInfo(
+            Row(
+              children: [
+                RiskNavInfo(header: 'Total Risks', value: '55', trailing: ''),
+                HorizontalDivider(),
+                RiskNavInfo(
                 header: 'Risk Exposure', value: '1.29', trailing: 'M\$'),
-            const HorizontalDivider(),
-            RiskNavInfo(
-                header: 'Treatment Activities', value: '216', trailing: ''),
-            const HorizontalDivider(),
-            RiskNavInfo(
+              ],
+            ),
+            
+            
+            
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RiskNavInfo(
+                    header: 'Treatment Activities', value: '216', trailing: ''),
+                    HorizontalDivider(),
+                     RiskNavInfo(
                 header: 'Treatment Progress', value: '62', trailing: '%'),
-            const HorizontalDivider(),
-            const MyPieChart(
+              ],
+            ),
+          
+           Row(
+            children: [
+MyPieChart(
               header: 'Inherent Risks',
             ),
-            const HorizontalDivider(),
-            const MyPieChart(
+             HorizontalDivider(),
+            MyPieChart(
+              header: 'Residual Risks',
+            )
+            ],
+           )
+           
+            
+          ],
+        );
+      }
+      
+      return const Row(
+          children: [
+            RiskNavInfo(header: 'Total Risks', value: '55', trailing: ''),
+            HorizontalDivider(),
+            RiskNavInfo(
+                header: 'Risk Exposure', value: '1.29', trailing: 'M\$'),
+            HorizontalDivider(),
+            RiskNavInfo(
+                header: 'Treatment Activities', value: '216', trailing: ''),
+            HorizontalDivider(),
+            RiskNavInfo(
+                header: 'Treatment Progress', value: '62', trailing: '%'),
+            HorizontalDivider(),
+            MyPieChart(
+              header: 'Inherent Risks',
+            ),
+            HorizontalDivider(),
+            MyPieChart(
               header: 'Residual Risks',
             )
           ],
-        ),
+        );
+    }),
+
         RiskRegisterMainContent()
       ],
     );

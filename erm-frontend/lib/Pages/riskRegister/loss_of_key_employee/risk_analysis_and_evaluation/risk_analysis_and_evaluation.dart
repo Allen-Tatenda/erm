@@ -22,7 +22,7 @@ class _RiskAnalysisAndEvaluationState extends State<RiskAnalysisAndEvaluation> {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              RiskInformation(),
+              const RiskInformation(),
               RiskRatingColumn(),
               InherentRiskColumn()
             ],

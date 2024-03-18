@@ -10,7 +10,7 @@ class OverallRiskAnalysis extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //height: MediaQuery.of(context).size.height - 333,
-      margin: EdgeInsets.only(left: 20),
+      margin: const EdgeInsets.only(left: 20),
       decoration: BoxDecoration(
           color: Colors.transparent,
           border: Border.all(width: 1, color: Colors.black12),
@@ -43,21 +43,21 @@ class OverallRiskAnalysis extends StatelessWidget {
                           Icons.add,
                           color: Colors.grey.shade600,
                         ),
-                        DropDownListTile()
+                        const DropDownListTile()
                       ],
                     ),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
                 decoration: BoxDecoration(
                     color: Colors.black12,
                     borderRadius: BorderRadius.circular(4)),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Row(
                     children: [
                       Icon(
@@ -78,13 +78,13 @@ class OverallRiskAnalysis extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
+                  SizedBox(
                     width: 50,
                     height: 50,
                     child: ClipRRect(
@@ -95,11 +95,11 @@ class OverallRiskAnalysis extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
+                  const SizedBox(
                     width: 304,
                     height: 149,
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                      padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
                       child: SingleChildScrollView(
                         child: Text(
                           'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
@@ -111,7 +111,7 @@ class OverallRiskAnalysis extends StatelessWidget {
                   const DropDownListTile(),
                 ],
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [

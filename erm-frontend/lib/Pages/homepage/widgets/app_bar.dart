@@ -14,7 +14,7 @@ class AppBarWidget extends StatelessWidget {
           var width = MediaQuery.of(context).size.width;
           print(width);
           if (width < 672) {
-            return SizedBox.shrink();
+            return const SizedBox.shrink();
           }
           return const Row(
             children: [
@@ -45,11 +45,11 @@ class AppBarWidget extends StatelessWidget {
               var width = MediaQuery.of(context).size.width;
               print(width);
               if (width < 672) {
-                return SizedBox.shrink();
+                return const SizedBox.shrink();
               }
               return Padding(
                 padding: const EdgeInsets.only(top: 2.0),
-                child: Container(
+                child: SizedBox(
                     width: 300,
                     height: 35,
                     child: TextField(
@@ -96,7 +96,7 @@ class AppBarWidget extends StatelessWidget {
             const SizedBox(
               width: 4,
             ),
-            Container(
+            SizedBox(
               width: 50,
               height: 50,
               child: ClipRRect(

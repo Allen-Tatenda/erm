@@ -9,42 +9,42 @@ class NavigationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> navigationWidgets = [
-      NavigationCardWidget(
+      const NavigationCardWidget(
         name: 'Risk Register',
         image: 'assets/icons/logo-transparent.png',
         navigateTo: 1,
       ),
-      NavigationCardWidget(
+      const NavigationCardWidget(
         name: 'Objectives',
         image: 'assets/icons/logo-transparent.png',
         navigateTo: 2,
       ),
-      NavigationCardWidget(
+      const NavigationCardWidget(
         name: 'Risk Treatments',
         image: 'assets/icons/logo-transparent.png',
         navigateTo: 3,
       ),
-      NavigationCardWidget(
+      const NavigationCardWidget(
         name: 'Critical Assets',
         image: 'assets/icons/logo-transparent.png',
         navigateTo: 4,
       ),
-      NavigationCardWidget(
+      const NavigationCardWidget(
         name: 'Top 10 Risks',
         image: 'assets/icons/logo-transparent.png',
         navigateTo: 5,
       ),
-      NavigationCardWidget(
+      const NavigationCardWidget(
         name: 'Risk Dashboards',
         image: 'assets/icons/logo-transparent.png',
         navigateTo: 6,
       ),
-      NavigationCardWidget(
+      const NavigationCardWidget(
         name: 'Risk Reporting',
         image: 'assets/icons/logo-transparent.png',
         navigateTo: 7,
       ),
-      NavigationCardWidget(
+      const NavigationCardWidget(
         name: 'Help Center',
         image: 'assets/icons/logo-transparent.png',
         navigateTo: 8,
@@ -53,7 +53,7 @@ class NavigationWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Navigate',
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
@@ -78,7 +78,7 @@ class NavigationWidget extends StatelessWidget {
               ),
             );
           }
-          return Row(
+          return const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               NavigationCardWidget(

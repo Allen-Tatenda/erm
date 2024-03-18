@@ -15,6 +15,7 @@ class _LossOfKeyEmployeeState extends State<LossOfKeyEmployee> {
     return Container(
       child: const Column(
         children: [
+          SizedBox(height: 20,),
           Row(
             children: [
               Text(

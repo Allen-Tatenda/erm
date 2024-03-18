@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
             height: MediaQuery.of(context).size.height - 300,
             child: const HeroWidget()),
         const SizedBox(

@@ -55,7 +55,7 @@ class _HeatMapState extends State<HeatMap> {
         : '---';
     return SingleChildScrollView(
       child: Container(
-        margin: EdgeInsets.only(left: 20),
+        margin: const EdgeInsets.only(left: 20),
         decoration: BoxDecoration(
             color: Colors.transparent,
             border: Border.all(width: 1, color: Colors.black12),
@@ -66,7 +66,7 @@ class _HeatMapState extends State<HeatMap> {
             const SizedBox(height: 16),
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w900,
                 color: Colors.black,
                 fontSize: 16,
@@ -74,7 +74,7 @@ class _HeatMapState extends State<HeatMap> {
             ),
             Text(subtitle),
             const SizedBox(height: 8),
-            Container(
+            SizedBox(
               width: 300,
               height: 300,
               child: Heatmap(
