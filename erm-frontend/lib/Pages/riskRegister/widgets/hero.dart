@@ -1,3 +1,4 @@
+import 'package:erm/Pages/main_page.dart';
 import 'package:erm/widgets/navigation_method.dart';
 import 'package:flutter/material.dart';
 
@@ -71,6 +72,7 @@ class RiskRegisterHero extends StatelessWidget {
                         ])),
                     child: InkWell(
                       onTap: () {
+                        activeTab = 0;
                         navigationStream.sink.add(0);
                       },
                       child: const Padding(

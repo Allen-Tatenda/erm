@@ -1,5 +1,6 @@
 import 'package:erm/Pages/homepage/widgets/hero.dart';
 import 'package:erm/Pages/homepage/widgets/navigation.dart';
+import 'package:erm/widgets/loading.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,8 +12,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        
         SizedBox(
-            height: MediaQuery.of(context).size.height - 300,
+            height: MediaQuery.of(context).size.height - 317,
             child: const HeroWidget()),
         const SizedBox(
           height: 10,

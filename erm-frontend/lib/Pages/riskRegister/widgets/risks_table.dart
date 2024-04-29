@@ -1,7 +1,10 @@
+import 'package:erm/Pages/main_page.dart';
 import 'package:erm/widgets/dropdown_listTile.dart';
 import 'package:flutter/material.dart';
 
-class RisksTable extends StatelessWidget {
+import '../../../widgets/navigation_method.dart';
+
+class RisksTable extends StatefulWidget {
   const RisksTable({
     super.key,
     required List<Map<String, String>> data,
@@ -9,6 +12,11 @@ class RisksTable extends StatelessWidget {
 
   final List<Map<String, String>> _data;
 
+  @override
+  State<RisksTable> createState() => _RisksTableState();
+}
+
+class _RisksTableState extends State<RisksTable> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,6 +26,7 @@ class RisksTable extends StatelessWidget {
           border: Border.all(width: 1, color: Colors.black12),
           borderRadius: BorderRadius.circular(4)),
       child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
         child: DataTable(
           decoration: const BoxDecoration(color: Colors.white70),
           // Columns definition
@@ -65,7 +74,7 @@ class RisksTable extends StatelessWidget {
             DataColumn(label: Text('')),
           ],
           // Rows definition
-          rows: _data
+          rows: widget._data
               .asMap()
               .entries
               .map((entry) => DataRow(
@@ -82,13 +91,22 @@ class RisksTable extends StatelessWidget {
                                     : Colors.red,
                             borderRadius: BorderRadius.circular(50)),
                       )),
-                      DataCell(Text(
-                        entry.value['Risk']!,
-                        style: const TextStyle(fontSize: 12),
+                      DataCell(InkWell(
+                        onTap: (){
+                            activeTab = 2;
+                            navigationStream.sink.add(activeTab);
+                        },
+                        child: Text(
+                          entry.value['Risk']!,
+                          style: const TextStyle(fontSize: 12),
+                        ),
                       )),
-                      DataCell(Text(
-                        entry.value['Risk Description']!,
-                        style: const TextStyle(fontSize: 12),
+                      DataCell(Container(
+                        width: 210,
+                        child: Text(
+                          entry.value['Risk Description']!,
+                          style: const TextStyle(fontSize: 12),
+                        ),
                       )),
                       DataCell(Text(
                         entry.value['Risk Owner']!,
@@ -105,7 +123,8 @@ class RisksTable extends StatelessWidget {
                       return Colors
                           .white; // Use default color for odd rows (white)
                     }),
-                  ))
+                  )
+                  )
               .toList(),
         ),
       ),

@@ -1,7 +1,9 @@
 import 'package:erm/widgets/navigation_method.dart';
 import 'package:flutter/material.dart';
 
-class NavigationCardWidget extends StatelessWidget {
+import '../Pages/main_page.dart';
+
+class NavigationCardWidget extends StatefulWidget {
   final String name;
   final String image;
   final int navigateTo;
@@ -13,14 +15,22 @@ class NavigationCardWidget extends StatelessWidget {
   });
 
   @override
+  State<NavigationCardWidget> createState() => _NavigationCardWidgetState();
+}
+
+class _NavigationCardWidgetState extends State<NavigationCardWidget> {
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: InkWell(
         onTap: () {
-          navigationStream.sink.add(navigateTo);
+           setState(() {
+             activeTab = widget.navigateTo;
+             navigationStream.sink.add(activeTab);
+           });
         },
-        child: LayoutBuilder(builder: (context, widget) {
+        child: LayoutBuilder(builder: (context, w) {
           var width = MediaQuery.of(context).size.width;
           print(width);
           if (width < 672) {
@@ -37,13 +47,13 @@ class NavigationCardWidget extends StatelessWidget {
                       SizedBox(
                         width: 60,
                         height: 60,
-                        child: Image.asset(image),
+                        child: Image.asset(widget.image),
                       ),
                       const SizedBox(
                         height: 8,
                       ),
                       Text(
-                        name,
+                        widget.name,
                         style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w900,
@@ -67,13 +77,13 @@ class NavigationCardWidget extends StatelessWidget {
                     SizedBox(
                       width: 100,
                       height: 100,
-                      child: Image.asset(image),
+                      child: Image.asset(widget.image),
                     ),
                     const SizedBox(
                       height: 8,
                     ),
                     Text(
-                      name,
+                      widget.name,
                       style: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w900,

@@ -13,6 +13,7 @@ class _LossOfKeyEmployeeState extends State<LossOfKeyEmployee> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: MediaQuery.of(context).size.height,
       child: const Column(
         children: [
           SizedBox(height: 20,),

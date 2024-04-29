@@ -1,5 +1,6 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:erm/Pages/riskRegister/loss_of_key_employee/risk_analysis_and_evaluation/risk_analysis_and_evaluation.dart';
+import 'package:erm/Pages/riskRegister/loss_of_key_employee/existing_controls/existing_controls.dart';
 import 'package:flutter/material.dart';
 
 class LossOfKeyContainedTabBar extends StatefulWidget {
@@ -15,7 +16,7 @@ class _LossOfKeyContainedTabBarState extends State<LossOfKeyContainedTabBar> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height - 130,
+      height: MediaQuery.of(context).size.height - 178,
       child: ContainedTabBarView(
         tabs: const [
           Text(
@@ -68,9 +69,9 @@ class _LossOfKeyContainedTabBarState extends State<LossOfKeyContainedTabBar> {
             labelColor: Colors.white,
             unselectedLabelColor: Colors.red,
             isScrollable: true),
-        views: [
-          const RiskAnalysisAndEvaluation(),
-          Container(color: Colors.green),
+        views:  [
+          RiskAnalysisAndEvaluation(),
+          ExistingControls(),
           Container(color: Colors.red),
           Container(color: Colors.green),
           Container(color: Colors.red)
