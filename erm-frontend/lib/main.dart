@@ -1,3 +1,4 @@
+import 'package:erm/Auth/login.dart';
 import 'package:erm/Pages/main_page.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Entrance(),
+      home: const LoginPage()
+      //const Entrance(),
     );
   }
 }
