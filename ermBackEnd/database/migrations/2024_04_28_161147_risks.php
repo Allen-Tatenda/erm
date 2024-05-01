@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('risk_owner_id')->references('id')->on('users');
             $table->string('risk_name');
             $table->string('priority');
-            $table->string('risk_description');
+            $table->text('risk_description');
             $table->string('residual_impact');
             $table->string('residual_likelihood');
             $table->string('risk_exposure');

@@ -54,15 +54,16 @@ class HeroWidget extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        gradient: LinearGradient(colors: [
-                          Colors.lightBlue.shade900,
-                          Colors.blueAccent
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 2, 1, 26),
+                          Colors.blue,
+                          Color.fromARGB(255, 2, 1, 26)
                         ])),
                     child: const Padding(
                       padding: EdgeInsets.fromLTRB(20, 8, 20, 8),
                       child: Text(
                         'Release Notes',
-                        style: TextStyle(color: Colors.white, fontSize: 12),
+                        style: TextStyle(color: Colors.white, fontSize: 14,fontWeight: FontWeight.w600),
                       ),
                     ),
                   )

@@ -1,11 +1,21 @@
-import 'package:erm_logic/auth/login.dart';
+import 'package:erm/Auth/splash_screen.dart';
+import 'package:erm_logic/auth/auth_controller.dart';
+import 'package:erm_logic/helpers/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({
+class LoginPage extends StatefulWidget {
+ LoginPage({
     super.key,
   });
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController emailTextEditingController = TextEditingController();
+
+    TextEditingController passwordTextEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +32,7 @@ class LoginPage extends StatelessWidget {
               child: Container(
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                    colors: [ Colors.transparent,Color.fromARGB(239, 194, 192, 192),Color.fromARGB(235, 238, 235, 235)], stops: [0,0.5, 1])
+                    colors: [ Colors.transparent,Color.fromARGB(238, 233, 232, 232),Color.fromARGB(238, 233, 232, 232)], stops: [0,0.5, 1])
                     ),
           )),
           Positioned(
@@ -61,7 +71,7 @@ class LoginPage extends StatelessWidget {
                       const SizedBox(height: 20,),
                     SizedBox(
                       width: 400,
-                      height: 300,
+                      height: 302,
                       child: Card(
                         elevation: 7,
                         child: Padding(
@@ -69,8 +79,30 @@ class LoginPage extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
+                              StreamBuilder<String>(
+                                stream: loginError.stream,
+                                builder: (context, snapshot) {
+                                 if(snapshot.hasData){
+                                   return Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                     children: [
+                                       Text(snapshot.data.toString(),style: const TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.redAccent
+                                        
+                                       ),
+                                       textAlign: TextAlign.start,
+                                       ),
+                                     ],
+                                   );
+                                 }
+                                 return const SizedBox.shrink();
+                                }
+                              ),
                               const SizedBox(height: 10,),
                               TextField(
+                                
+                                controller: emailTextEditingController,
                               decoration: InputDecoration(
                                 hintText: 'Email',
                                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
@@ -80,6 +112,8 @@ class LoginPage extends StatelessWidget {
                               const SizedBox(height: 20,),
                                               
                               TextField(
+                                controller: passwordTextEditingController,
+                                obscureText: true,
                               decoration: InputDecoration(
                                 hintText: 'Password',
                                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
@@ -90,7 +124,7 @@ class LoginPage extends StatelessWidget {
 
                               InkWell(
                                 onTap: (){
-                                  Login().login();
+                                  AuthController().login(emailTextEditingController.text,passwordTextEditingController.text,context,const SplashScreen());
                                   },
                                 child: Container(
                                   width: double.infinity,
@@ -118,9 +152,9 @@ class LoginPage extends StatelessWidget {
                                 ),
                               ),
           
-                              SizedBox(height: 20,),
+                              const SizedBox(height: 20,),
 
-                              Text('Forgot Password?',style: TextStyle(color: Colors.blue),)
+                              const Text('Forgot Password?',style: TextStyle(color: Colors.blue),)
 
 
                             ],

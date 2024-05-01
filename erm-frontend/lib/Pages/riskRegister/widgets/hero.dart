@@ -27,10 +27,12 @@ class RiskRegisterHero extends StatelessWidget {
               height: 10,
               width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
+                
                   gradient: LinearGradient(colors: [
-                Color.fromARGB(255, 5, 95, 168),
-                Colors.blueAccent,
-                Colors.lightGreenAccent
+                    Colors.blue,
+                    Color.fromARGB(255, 2, 1, 26),
+                    Color.fromARGB(255, 2, 1, 26),
+                    Colors.blue,
               ])),
             ),
           ),
@@ -38,14 +40,18 @@ class RiskRegisterHero extends StatelessWidget {
             bottom: 0,
             child: Container(
               decoration: const BoxDecoration(
-                  color: Colors.blue,
+                   gradient: LinearGradient(colors: [
+                    Color.fromARGB(255, 2, 1, 26),
+                    Color.fromARGB(255, 9, 118, 207),
+                    Color.fromARGB(255, 2, 1, 26)
+              ]),
                   borderRadius:
                       BorderRadius.vertical(top: Radius.elliptical(400, 444))),
               child: const Padding(
                 padding: EdgeInsets.only(left: 60, top: 10, right: 80),
                 child: Text(
                   'Risk Register',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+                 style: TextStyle(color: Colors.white, fontSize: 18,fontWeight: FontWeight.w600)
                 ),
               ),
             ),
@@ -66,9 +72,10 @@ class RiskRegisterHero extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        gradient: LinearGradient(colors: [
-                          Colors.lightBlue.shade900,
-                          Colors.blueAccent
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 2, 1, 26),
+                          Colors.blue,
+                          Color.fromARGB(255, 2, 1, 26)
                         ])),
                     child: InkWell(
                       onTap: () {
@@ -85,8 +92,7 @@ class RiskRegisterHero extends StatelessWidget {
                             ),
                             Text(
                               'Navigation',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
+                             style: TextStyle(color: Colors.white, fontSize: 14,fontWeight: FontWeight.w600)
                             ),
                           ],
                         ),
@@ -99,9 +105,10 @@ class RiskRegisterHero extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        gradient: LinearGradient(colors: [
-                          Colors.lightBlue.shade900,
-                          Colors.blueAccent
+                        gradient: const LinearGradient(colors: [
+                          Color.fromARGB(255, 2, 1, 26),
+                          Colors.blue,
+                          Color.fromARGB(255, 2, 1, 26)
                         ])),
                     child: const Padding(
                       padding: EdgeInsets.fromLTRB(20, 2, 10, 2),
@@ -109,7 +116,7 @@ class RiskRegisterHero extends StatelessWidget {
                         children: [
                           Text(
                             'Treatments',
-                            style: TextStyle(color: Colors.white, fontSize: 12),
+                            style: TextStyle(color: Colors.white, fontSize: 14,fontWeight: FontWeight.w600)
                           ),
                           Icon(
                             Icons.chevron_right,

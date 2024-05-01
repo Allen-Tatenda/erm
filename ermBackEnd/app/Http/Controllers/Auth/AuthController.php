@@ -32,6 +32,7 @@ class AuthController extends Controller
             'roles'  => $request->roles,
             'department'  => $request->department,
             'email' => $request->email,
+            'password_set' => false,
             'password' => bcrypt($request->password),
         ]);
 
@@ -61,10 +62,9 @@ class AuthController extends Controller
        $user = User::where('email', $request->email)->first();
 
        if(!$user || !Hash::check($request['password'], $user->password)){
-
-        return response([
-            'message' => 'Bad Credentials'
-        ],401);
+        return  response([
+            'message' => 'Email and Password do not match.'
+        ],400);
        }
 
         else{
@@ -79,6 +79,29 @@ class AuthController extends Controller
         }
         
     }
+
+public function password(Request $request){
+     // Validate the incoming request data
+     $request->validate([
+        'current_password' => ['required', 'string'],
+        'new_password' => ['required', 'string', 'min:6'],
+    ]);
+
+    $user = Auth::user();
+
+    // Check if current password matches
+    if (!Hash::check($request->current_password, $user->password)) {
+        return response()->json(['message' => 'Current password is incorrect'], 401);
+    }
+
+    // Update user's password
+    $user->password = Hash::make($request->new_password);
+    $user->password_set = true;
+   // Save changes to database  
+   $user->save();
+
+   return response()->json(['message' => 'Password updated successfully']);
+}
 
 public function user(Request $request)
 {

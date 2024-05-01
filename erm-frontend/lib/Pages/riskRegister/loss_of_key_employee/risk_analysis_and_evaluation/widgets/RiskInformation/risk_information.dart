@@ -1,13 +1,14 @@
 import 'package:erm/Pages/riskRegister/loss_of_key_employee/risk_analysis_and_evaluation/widgets/RiskInformation/widgets/risk_info_subheading_text.dart';
+import 'package:erm_logic/helpers/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/risk-infomation_header.dart';
 
 class RiskInformation extends StatelessWidget {
-  const RiskInformation({
+  RiskInformation({
     super.key,
   });
-  showEditing(){}
+  
 
   @override
   Widget build(BuildContext context) {
@@ -35,39 +36,38 @@ class RiskInformation extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                     const Text(
                       'PRIORITY',
                       style: TextStyle(
                           fontSize: 16,
                           fontFamily: 'BebasNeue',
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey),
+                          color:Colors.grey),
                     ),
                     Container(
                       width: 15,
                       height: 15,
                       decoration: BoxDecoration(
-                          color: Colors.lightGreen,
+                          color: ( singleRiskData['priority'] =='1')?Colors.red:( singleRiskData['priority'] =='2')?Colors.amber:( singleRiskData['priority'] =='3')?Colors.blue:Colors.green,
                           borderRadius: BorderRadius.circular(50)),
                     ),
                   ]),
             ),
-            const RiskInfoSubHeadingAndText(
+             RiskInfoSubHeadingAndText(
               subheading: 'RISK ID',
-              text: 'R1003-3',
+              text: singleRiskData['risk_id']
             ),
-            const RiskInfoSubHeadingAndText(
+             RiskInfoSubHeadingAndText(
               subheading: 'RISK',
-              text: 'Loss of key employee',
+              text: singleRiskData['risk_name']
             ),
-            const RiskInfoSubHeadingAndText(
+             RiskInfoSubHeadingAndText(
               subheading: 'RISK DESCRIPTION',
-              text:
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+              text: singleRiskData['risk_description']
             ),
-            const RiskInfoSubHeadingAndText(
+             RiskInfoSubHeadingAndText(
               subheading: 'RISK OWNER',
-              text: 'Sarah Robert',
+              text: "${singleRiskData['risk_owner']['firstname']} ${singleRiskData['risk_owner']['lastname']}",
             ),
             const RiskInfoSubHeadingAndText(
               subheading: 'RISK CATEGORY',

@@ -6,83 +6,17 @@ import 'package:erm/widgets/dropdown_listTile.dart';
 import 'package:erm/Pages/riskRegister/widgets/heat_map.dart';
 import 'package:flutter/material.dart';
 
-class RiskRegisterMainContent extends StatelessWidget {
+class RiskRegisterMainContent extends StatefulWidget {
   RiskRegisterMainContent({super.key});
 
-  final List<Map<String, String>> _data = [
-    {
-      "RiskID": "RI10021",
-      "Priority": "0",
-      "Risk": "liquidity Risk",
-      "Risk Description":
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "Risk Owner": "Olivia Davis"
-    },
-    {
-      "RiskID": "RI10321",
-      "Priority": "1",
-      "Risk": "liquidity Risk",
-      "Risk Description":
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "Risk Owner": "Becky Dawn"
-    },
-    {
-      "RiskID": "RI15021",
-      "Priority": "2",
-      "Risk": "liquidity Risk",
-      "Risk Description":
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "Risk Owner": "Lenny Browski"
-    },
-    {
-      "RiskID": "RI10021",
-      "Priority": "0",
-      "Risk": "liquidity Risk",
-      "Risk Description":
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "Risk Owner": "Olivia Davis"
-    },
-    {
-      "RiskID": "RI10321",
-      "Priority": "1",
-      "Risk": "liquidity Risk",
-      "Risk Description":
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "Risk Owner": "Becky Dawn"
-    },
-    {
-      "RiskID": "RI15021",
-      "Priority": "2",
-      "Risk": "liquidity Risk",
-      "Risk Description":
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "Risk Owner": "Lenny Browski"
-    },
-    {
-      "RiskID": "RI10021",
-      "Priority": "0",
-      "Risk": "liquidity Risk",
-      "Risk Description":
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "Risk Owner": "Olivia Davis"
-    },
-    {
-      "RiskID": "RI10321",
-      "Priority": "1",
-      "Risk": "liquidity Risk",
-      "Risk Description":
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "Risk Owner": "Becky Dawn"
-    },
-    {
-      "RiskID": "RI15021",
-      "Priority": "2",
-      "Risk": "liquidity Risk",
-      "Risk Description":
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "Risk Owner": "Lenny Browski"
-    },
-  ];
+  @override
+  State<RiskRegisterMainContent> createState() => _RiskRegisterMainContentState();
+}
+
+class _RiskRegisterMainContentState extends State<RiskRegisterMainContent> {
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -118,6 +52,17 @@ class RiskRegisterMainContent extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                             InkWell(
+                              onTap: (){
+                                setState(() {
+                                  
+                                });
+                              },
+                               child: Icon(
+                                Icons.refresh,
+                                color: Colors.grey.shade600,
+                                                           ),
+                             ),
                             Icon(
                               Icons.add,
                               color: Colors.grey.shade600,
@@ -140,7 +85,7 @@ class RiskRegisterMainContent extends StatelessWidget {
                       )
                     ],
                   ),
-                  RisksTable(data: _data),
+                  RisksTable(),
                 ],
               ),
             ),

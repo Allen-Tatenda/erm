@@ -1,8 +1,11 @@
+import 'package:erm/Auth/splash_screen.dart';
 import 'package:erm/Pages/homepage/responsive.dart';
 import 'package:erm/Pages/homepage/widgets/app_bar.dart';
 import 'package:erm/Pages/riskRegister/loss_of_key_employee/loss_of_key_employee.dart';
 import 'package:erm/Pages/riskRegister/risk_register.dart';
+import 'package:erm/Pages/settings/settings.dart';
 import 'package:erm/widgets/navigation_method.dart';
+import 'package:erm_logic/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
 
 class Entrance extends StatefulWidget {
@@ -37,8 +40,18 @@ class _EntranceState extends State<Entrance> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-       backgroundColor: Colors.blueAccent,
-      title: const AppBarWidget(),),
+      title: const AppBarWidget(),
+      iconTheme:  const IconThemeData(color: Colors.white),
+       flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [ Color.fromARGB(255, 2, 1, 26),Colors.blue,  Color.fromARGB(255, 2, 1, 26),],
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+              ),
+            ),
+          ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Column(
@@ -79,6 +92,9 @@ class _EntranceState extends State<Entrance> {
                       child: ListView.builder(
                         itemCount: myPages.length,
                         itemBuilder: (context, index) {
+                          if(index == 2){
+                            return const SizedBox.shrink();
+                          }
                           return  ListTile(
                             leading: SizedBox(
                               width: 20,
@@ -93,8 +109,28 @@ class _EntranceState extends State<Entrance> {
                       );
                         },),
                     ),
-                
-                    Text('Copyright 2024 GRC',style: TextStyle(color: Colors.grey),)
+
+                    Column(
+                      children: [
+                        ListTile(
+                                leading: const Icon(Icons.settings,size: 25,color: Colors.blue,),
+                            title: const Text('SETTINGS'),
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SettingsPage()));
+                            },
+                          ),
+                        ListTile(
+                                leading: const Icon(Icons.logout,size: 25,color: Colors.blue,),
+                            title: const Text('Logout'),
+                            onTap: () {
+                              setState(() {
+                            AuthController().logout(context,const SplashScreen());
+                          });
+                            },
+                          ),
+                      ],
+                    ),
+                    const Text('Copyright 2024 GRC',style: TextStyle(color: Colors.grey),)
                   ],
                 ),
               ),

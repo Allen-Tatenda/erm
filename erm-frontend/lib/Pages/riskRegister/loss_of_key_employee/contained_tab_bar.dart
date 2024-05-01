@@ -4,7 +4,7 @@ import 'package:erm/Pages/riskRegister/loss_of_key_employee/existing_controls/ex
 import 'package:flutter/material.dart';
 
 class LossOfKeyContainedTabBar extends StatefulWidget {
-  const LossOfKeyContainedTabBar({super.key});
+  LossOfKeyContainedTabBar( {super.key});
 
   @override
   State<LossOfKeyContainedTabBar> createState() =>
