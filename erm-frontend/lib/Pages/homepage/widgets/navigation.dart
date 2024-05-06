@@ -17,32 +17,32 @@ class NavigationWidget extends StatelessWidget {
       const NavigationCardWidget(
         name: 'Objectives',
         image: 'assets/icons/logo-transparent.png',
-        navigateTo: 2,
+        navigateTo: 3,
       ),
       const NavigationCardWidget(
         name: 'Risk Treatments',
         image: 'assets/icons/logo-transparent.png',
-        navigateTo: 3,
+        navigateTo: 4,
       ),
       const NavigationCardWidget(
         name: 'Critical Assets',
         image: 'assets/icons/logo-transparent.png',
-        navigateTo: 4,
+        navigateTo: 5,
       ),
       const NavigationCardWidget(
         name: 'Top 10 Risks',
         image: 'assets/icons/logo-transparent.png',
-        navigateTo: 5,
+        navigateTo: 6,
       ),
       const NavigationCardWidget(
         name: 'Risk Dashboards',
         image: 'assets/icons/logo-transparent.png',
-        navigateTo: 6,
+        navigateTo: 7,
       ),
       const NavigationCardWidget(
         name: 'Risk Reporting',
         image: 'assets/icons/logo-transparent.png',
-        navigateTo: 7,
+        navigateTo: 8,
       ),
       const NavigationCardWidget(
         name: 'Help Center',
@@ -89,37 +89,37 @@ class NavigationWidget extends StatelessWidget {
               NavigationCardWidget(
                 name: 'Objectives',
                 image: 'assets/icons/logo-transparent.png',
-                navigateTo: 2,
+                navigateTo: 3,
               ),
               NavigationCardWidget(
                 name: 'Risk Treatments',
                 image: 'assets/icons/logo-transparent.png',
-                navigateTo: 3,
+                navigateTo: 4,
               ),
               NavigationCardWidget(
                 name: 'Critical Assets',
                 image: 'assets/icons/logo-transparent.png',
-                navigateTo: 4,
+                navigateTo: 5,
               ),
               NavigationCardWidget(
                 name: 'Top 10 Risks',
                 image: 'assets/icons/logo-transparent.png',
-                navigateTo: 5,
+                navigateTo: 6,
               ),
               NavigationCardWidget(
                 name: 'Risk Dashboards',
                 image: 'assets/icons/logo-transparent.png',
-                navigateTo: 6,
+                navigateTo: 7,
               ),
               NavigationCardWidget(
                 name: 'Risk Reporting',
                 image: 'assets/icons/logo-transparent.png',
-                navigateTo: 7,
+                navigateTo: 8,
               ),
               NavigationCardWidget(
                 name: 'Help Center',
                 image: 'assets/icons/logo-transparent.png',
-                navigateTo: 8,
+                navigateTo: 9,
               ),
             ],
           );

@@ -22,8 +22,8 @@ class Entrance extends StatefulWidget {
    const LossOfKeyEmployee(),
   ];
   List myPages = [
-  "Home", 
- "Risk Register",
+  "HOME", 
+ "RISK REGISTER",
  "Loss of Key Employee"
   ];
 
@@ -121,7 +121,7 @@ class _EntranceState extends State<Entrance> {
                           ),
                         ListTile(
                                 leading: const Icon(Icons.logout,size: 25,color: Colors.blue,),
-                            title: const Text('Logout'),
+                            title: const Text('SIGNOUT'),
                             onTap: () {
                               setState(() {
                             AuthController().logout(context,const SplashScreen());

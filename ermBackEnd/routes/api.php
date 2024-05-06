@@ -22,6 +22,9 @@ Route::group(['prefix' => 'auth'], function () {
       Route::post('password', [AuthController::class, 'password']);
     });
 });
+Route::group(['middleware' => 'auth:sanctum'], function() {
+    Route::get('users', [AuthController::class, 'user']);
+  });
 
 Route::middleware("auth:sanctum")->group(function () {
     Route::get('risks',[RiskController::class,'getRisks']);
