@@ -25,6 +25,7 @@ class User extends Authenticatable
         'designation',
         'roles',
         'department',
+        'phone',
         'email',
         'password_set',
         'password',
@@ -53,18 +54,10 @@ class User extends Authenticatable
         ];
     }
 
-    public function discussions()
-    {
-        return $this->hasMany(Discussions::class);
-    }
     public function risks()
     {
         return $this->hasMany(Risks::class);
     }
 
-    public function criticalAssets()
-    {
-        return $this->hasMany(CriticalAssets::class);
-    }
 
 }

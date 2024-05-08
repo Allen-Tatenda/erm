@@ -1,3 +1,4 @@
+import 'package:erm/Pages/riskRegister/widgets/add_risk/add_risk.dart';
 import 'package:erm/Pages/riskRegister/widgets/overall_risk_analysis.dart';
 import 'package:erm/Pages/riskRegister/widgets/risk_by_division/risk_by_division.dart';
 import 'package:erm/Pages/riskRegister/widgets/risk_reports/risk_reports.dart';
@@ -63,10 +64,7 @@ class _RiskRegisterMainContentState extends State<RiskRegisterMainContent> {
                                 color: Colors.grey.shade600,
                                                            ),
                              ),
-                            Icon(
-                              Icons.add,
-                              color: Colors.grey.shade600,
-                            ),
+                             AddRiskModal(),
                             Icon(
                               Icons.search,
                               color: Colors.grey.shade600,

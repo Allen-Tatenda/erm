@@ -1,5 +1,5 @@
 import 'package:erm/Pages/main_page.dart';
-import 'package:erm/widgets/dropdown_listTile.dart';
+import 'package:erm/Pages/riskRegister/single_risk_details/single_risk_details.dart';
 import 'package:erm/widgets/loading.dart';
 import 'package:erm_logic/helpers/constants.dart';
 import 'package:erm_logic/risk_register/risk_register_repository.dart';
@@ -46,6 +46,8 @@ class _RisksTableState extends State<RisksTable> {
               );
             rows.add(row);
           }
+
+          totalRisks.sink.add(rows.length);
 
            return Container(
                  //width: MediaQuery.of(context).size.width ,
@@ -135,8 +137,10 @@ class _RisksTableState extends State<RisksTable> {
                           singleRiskData = data;
                           riskInfoStream.sink.add(data);
                         });
-                          activeTab = 2;
-                          navigationStream.sink.add(activeTab);
+
+                        Navigator.push(context, MaterialPageRoute(builder: ((context) =>  SingleRiskDetails(data: data,))));
+                          // activeTab = 2;
+                          // navigationStream.sink.add(activeTab);
                       },
                       child: Text(
                         name.toString(),

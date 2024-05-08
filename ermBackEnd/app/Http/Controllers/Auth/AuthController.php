@@ -5,7 +5,6 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -19,6 +18,7 @@ class AuthController extends Controller
             'designation' => 'required|string',
             'roles' => 'required|string',
             'department' => 'required|string',
+            'phone' => 'required|string',
             'email'=>'required|email|string|unique:users',
             'password'=>'required|string|min:6',
            
@@ -31,6 +31,7 @@ class AuthController extends Controller
             'designation'  => $request->designation,
             'roles'  => $request->roles,
             'department'  => $request->department,
+            'phone' => $request->phone,
             'email' => $request->email,
             'password_set' => false,
             'password' => bcrypt($request->password),

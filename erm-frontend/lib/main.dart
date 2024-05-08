@@ -1,8 +1,4 @@
-import 'package:erm/Auth/login.dart';
 import 'package:erm/Auth/splash_screen.dart';
-import 'package:erm/Pages/main_page.dart';
-import 'package:erm/Pages/settings/settings.dart';
-import 'package:erm/Pages/settings/widgets/set_password_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

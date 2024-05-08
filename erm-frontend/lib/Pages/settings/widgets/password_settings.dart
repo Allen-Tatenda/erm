@@ -1,4 +1,6 @@
 import 'package:erm/Pages/settings/widgets/set_password_screen.dart';
+import 'package:erm/widgets/loading.dart';
+import 'package:erm_logic/settings/settings_repository.dart';
 import 'package:flutter/material.dart';
 
 class PasswordSettings extends StatelessWidget {
@@ -50,61 +52,94 @@ class PasswordSettings extends StatelessWidget {
          Row(
           children: [
            
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        children: [
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                          Expanded(child: Text("Name:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
-                           Expanded(child: Text("Njiva Allen Tatenda",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
-                      ],
-                      ),
-                      Divider(color: Colors.black.withOpacity(.1),),
-                       const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                          Expanded(child: Text("Username:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
-                           Expanded(child: Text("whyteeonit",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
-                      ],
-                      ),
-                       
-                         Divider(color: Colors.black.withOpacity(.1),),
-                       const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                          Expanded(child: Text("Email:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
-                          Expanded(child: Text("anjiva7@gmail.com",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
-                      ],
-                      ),
-                        Divider(color: Colors.black.withOpacity(.1),),
-                       const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                          Expanded(child: Text("Phone:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
-                           Expanded(child: Text("+263 772 504 909",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
-                      ],
-                      ),
+      Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+                         
+            FutureBuilder(
+              future: SettingsRepository().getMyProfile(),
+               builder: (context,snapshot) {
+                if(snapshot.hasData){
+                 return Row(
+                  children: [
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                children: [
+                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                  const Expanded(child: Text("Name:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
+                                   Expanded(child: Text("${snapshot.data['firstname']} ${snapshot.data['lastname']}",style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
+                              ],
+                              ),
+                              Divider(color: Colors.black.withOpacity(.1),),
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                  const Expanded(child: Text("Position:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
+                                   Expanded(child: Text("${snapshot.data['designation']}",style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
+                              ],
+                              ),
+                                Divider(color: Colors.black.withOpacity(.1),),
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                  const Expanded(child: Text("Department:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
+                                   Expanded(child: Text("${snapshot.data['department']}",style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
+                              ],
+                              ),
+                                 Divider(color: Colors.black.withOpacity(.1),),
+                               Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                  const Expanded(child: Text("Email:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
+                                  Expanded(child: Text("${snapshot.data['email']}",style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
+                              ],
+                              ),
+                                Divider(color: Colors.black.withOpacity(.1),),
+                               const Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                  Expanded(child: Text("Phone:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
+                                   Expanded(child: Text("+263 772 504 909",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
+                              ],
+                              ),
+                                ],
+                              ),
+                            ),
+                          )
+                  ],
+                 );
+                }
+                return const LoadingWidget();
+               }
+             ),
+
                        Divider(color: Colors.black.withOpacity(.1),),
-                       Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                          Expanded(child: Text("Password",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
-                           Expanded(child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                             children: [
-                               Text("****************",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),
-                               ),
-                                        InkWell(
-                                          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SetPasswordScreen())),
-                                          child: Icon(Icons.edit,size: 25,color: Colors.black26,)
-                                        ),
-                             ],
-                           ))         
-                      ],
-                      ),
+                       Padding(
+                         padding: const EdgeInsets.only(left: 16),
+                         child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                            const Expanded(child: Text("Password",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
+                             Expanded(child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                               children: [
+                                 const Text("****************",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),
+                                 ),
+                                          InkWell(
+                                            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SetPasswordScreen())),
+                                            child: const Icon(Icons.edit,size: 25,color: Colors.black26,)
+                                          ),
+                               ],
+                             ))         
+                                               ],
+                                               ),
+                       ),
                         ],
                       ),
                     ),
@@ -189,9 +224,9 @@ class PasswordSettings extends StatelessWidget {
                   )
           ],
          ),
-       ],
-                 ),
-              ),
+      ],),),
+
+        const SizedBox(height:20)
       
             ],
           ),

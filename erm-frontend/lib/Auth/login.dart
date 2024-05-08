@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               StreamBuilder<String>(
-                                stream: loginError.stream,
+                                stream: authError.stream,
                                 builder: (context, snapshot) {
                                  if(snapshot.hasData){
                                    return Row(

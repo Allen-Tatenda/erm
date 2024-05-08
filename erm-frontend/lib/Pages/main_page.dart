@@ -1,7 +1,6 @@
 import 'package:erm/Auth/splash_screen.dart';
 import 'package:erm/Pages/homepage/responsive.dart';
 import 'package:erm/Pages/homepage/widgets/app_bar.dart';
-import 'package:erm/Pages/riskRegister/loss_of_key_employee/loss_of_key_employee.dart';
 import 'package:erm/Pages/riskRegister/risk_register.dart';
 import 'package:erm/Pages/settings/settings.dart';
 import 'package:erm/widgets/navigation_method.dart';
@@ -19,7 +18,6 @@ class Entrance extends StatefulWidget {
   final List _barWidgets = [
    const HomePageResponsive(),
    const RiskRegisterPage(),
-   const LossOfKeyEmployee(),
   ];
   List myPages = [
   "HOME", 
@@ -92,9 +90,6 @@ class _EntranceState extends State<Entrance> {
                       child: ListView.builder(
                         itemCount: myPages.length,
                         itemBuilder: (context, index) {
-                          if(index == 2){
-                            return const SizedBox.shrink();
-                          }
                           return  ListTile(
                             leading: SizedBox(
                               width: 20,

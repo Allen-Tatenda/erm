@@ -15,23 +15,12 @@ class Risks extends Model
         'risk_name',
         'priority',
         'risk_description',
-        'residual_impact',
-        'residual_likelihood',
-        'risk_exposure',
-        'relevance_to_objectives',
-        'risk_management_capacity',
+        'risk_category',
+        'risk_division',
+        'strategic_objective'
     ];
 
     public function riskOwner(){
         return $this->belongsTo(User::class,'risk_owner_id','id');
-    }
-
-    public function controlsEvaluation()
-    {
-        return $this->hasMany(ControlsEvaluation::class);
-    }
-    public function criticalAssets()
-    {
-        return $this->hasMany(CriticalAssets::class);
     }
 }

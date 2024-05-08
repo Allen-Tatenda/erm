@@ -3,6 +3,7 @@ import 'package:erm/Pages/riskRegister/widgets/horizontal_divider.dart';
 import 'package:erm/Pages/riskRegister/widgets/main_content.dart';
 import 'package:erm/Pages/riskRegister/widgets/pie_chart.dart';
 import 'package:erm/Pages/riskRegister/widgets/risk_nav_info.dart';
+import 'package:erm_logic/helpers/constants.dart';
 import 'package:flutter/material.dart';
 
 class RiskRegisterPage extends StatelessWidget {
@@ -23,20 +24,30 @@ class RiskRegisterPage extends StatelessWidget {
           var width = MediaQuery.of(context).size.width;
           print(width);
           if (width < 672) {
-                   return const Column(
+                   return  Column(
               children: [
                 Row(
                   children: [
-                    RiskNavInfo(header: 'Total Risks', value: '55', trailing: ''),
-                    HorizontalDivider(),
-                    RiskNavInfo(
+                    StreamBuilder<int>(
+                      stream: totalRisks.stream,
+                      builder: (context, snapshot) {
+                        if(snapshot.hasData){
+                          return RiskNavInfo(header: 'Total Risks', value: snapshot.data.toString(), trailing: '');
+                        }
+                        return const Center(
+                          child: CircularProgressIndicator.adaptive(),
+                        );
+                      }
+                    ),
+                    const HorizontalDivider(),
+                    const RiskNavInfo(
                     header: 'Risk Exposure', value: '1.29', trailing: 'M\$'),
                   ],
                 ),
                 
                 
                 
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     RiskNavInfo(
@@ -47,7 +58,7 @@ class RiskRegisterPage extends StatelessWidget {
                   ],
                 ),
               
-               Row(
+               const Row(
                 children: [
         MyPieChart(
                   header: 'Inherent Risks',
@@ -64,24 +75,34 @@ class RiskRegisterPage extends StatelessWidget {
             );
           }
           
-          return const Row(
+          return Row(
               children: [
-                RiskNavInfo(header: 'Total Risks', value: '55', trailing: ''),
-                HorizontalDivider(),
-                RiskNavInfo(
+                 StreamBuilder<int>(
+                      stream: totalRisks.stream,
+                      builder: (context, snapshot) {
+                        if(snapshot.hasData){
+                          return RiskNavInfo(header: 'Total Risks', value: snapshot.data.toString(), trailing: '');
+                        }
+                        return const Center(
+                          child: CircularProgressIndicator.adaptive(),
+                        );
+                      }
+                    ),
+                const HorizontalDivider(),
+                const RiskNavInfo(
                     header: 'Risk Exposure', value: '1.29', trailing: 'M\$'),
-                HorizontalDivider(),
-                RiskNavInfo(
+                const HorizontalDivider(),
+                const RiskNavInfo(
                     header: 'Treatment Activities', value: '216', trailing: ''),
-                HorizontalDivider(),
-                RiskNavInfo(
+                const HorizontalDivider(),
+                const RiskNavInfo(
                     header: 'Treatment Progress', value: '62', trailing: '%'),
-                HorizontalDivider(),
-                MyPieChart(
+                const HorizontalDivider(),
+                const MyPieChart(
                   header: 'Inherent Risks',
                 ),
-                HorizontalDivider(),
-                MyPieChart(
+                const HorizontalDivider(),
+                const MyPieChart(
                   header: 'Residual Risks',
                 )
               ],

@@ -1,6 +1,6 @@
 import 'dart:convert';
-
 import 'package:erm_logic/helpers/constants.dart';
+import 'package:erm_logic/widgets/progress_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
@@ -20,6 +20,7 @@ class AuthController{
       );
 
   Future<dynamic> login(String email,String password,c,Widget page) async{
+     Constants().ShowDialogMethod(c,"Signing in, Please wait...");
     var url = Uri.parse('${Constants().baseUrl}/api/auth/login');
 
      var headers = {
@@ -35,19 +36,20 @@ class AuthController{
           var token = data['accessToken'];
           await storage.write(key: 'token', value: token);
           Navigator.pop(c);
-          Navigator.of(c).push(MaterialPageRoute(builder: ((context) => page)));
+         return Navigator.of(c).push(MaterialPageRoute(builder: ((context) => page)));
         }
 
     else{
        var data = jsonDecode(response.body);
-      return loginError.sink.add(data['message']);
+       Navigator.pop(c);
+      return authError.sink.add(data['message']);
     }
     }{
       if(email.isEmpty){
-        loginError.sink.add('Email cannot be Empty');
+        authError.sink.add('Email cannot be Empty');
       }
       else if(password.isEmpty){
-        loginError.sink.add('Password cannot be Empty');
+        authError.sink.add('Password cannot be Empty');
       }
     }
 
@@ -100,6 +102,8 @@ Future<dynamic> getSession(c,Widget loggedin,Widget loggedOut,Widget setPassword
 
   Future<dynamic> logout(c,Widget splash) async{
 
+     Constants().ShowDialogMethod(c,"Signing out, Please wait...");
+
      var token = await storage.read(key: 'token');
   var url = Uri.parse('${Constants().baseUrl}/api/auth/logout');
 
@@ -122,8 +126,10 @@ Future<dynamic> getSession(c,Widget loggedin,Widget loggedOut,Widget setPassword
 
 Future<dynamic> changePassword(String oldPassword,String newPassword,c,splash) async{
 
-     var token = await storage.read(key: 'token');
-  var url = Uri.parse('${Constants().baseUrl}/api/auth/password');
+    Constants().ShowDialogMethod(c,"Changing Password, Please wait...");
+
+      var token = await storage.read(key: 'token');
+      var url = Uri.parse('${Constants().baseUrl}/api/auth/password');
 
      var headers = {
      'Accept': 'application/json',
@@ -131,9 +137,16 @@ Future<dynamic> changePassword(String oldPassword,String newPassword,c,splash) a
   };
     http.Response response;
        response = await http.post(url,headers:headers,body: {"current_password":oldPassword,"new_password":newPassword});
-        if(response.statusCode == 200){ 
-            Navigator.of(c).push(MaterialPageRoute(builder: ((context) => splash)));
+         var data = jsonDecode(response.body);
+        if(response.statusCode == 200){
+          authError.sink.add(data['message']);
+          Navigator.pop(c);
+          Navigator.popUntil(c, (route) => false);
+          return Navigator.of(c).push(MaterialPageRoute(builder: ((context) => splash)));
          }
-         print(response.body);
+         Navigator.pop(c);
+          return authError.sink.add(data['message']);
   }
+
+
 }

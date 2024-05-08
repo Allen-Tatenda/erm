@@ -1,5 +1,6 @@
 import 'package:erm/Auth/splash_screen.dart';
 import 'package:erm_logic/auth/auth_controller.dart';
+import 'package:erm_logic/helpers/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -32,7 +33,7 @@ class SetPasswordScreen extends StatelessWidget {
     body: Center(
         child: SizedBox(
                         width: 400,
-                        height: 325,
+                        height: 350,
                         child: Card(
                           elevation: 7,
                           child: Padding(
@@ -40,6 +41,27 @@ class SetPasswordScreen extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
+                              const SizedBox(height: 10,),
+                              StreamBuilder<String>(
+                                stream: authError.stream,
+                                builder: (context, snapshot) {
+                                 if(snapshot.hasData){
+                                   return Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                     children: [
+                                       Text(snapshot.data.toString(),style: const TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.redAccent
+                                        
+                                       ),
+                                       textAlign: TextAlign.start,
+                                       ),
+                                     ],
+                                   );
+                                 }
+                                 return const SizedBox.shrink();
+                                }
+                              ),
                                 const SizedBox(height: 10,),
                                   TextField(
                                   obscureText: true,
@@ -74,20 +96,22 @@ class SetPasswordScreen extends StatelessWidget {
         
         
                                 InkWell(
-                                  onTap: (){
+                                  onTap: ()async{
                                    if(passwordTextEditingController.text.isNotEmpty &&
                                     confirmPasswordTextEditingController.text.isNotEmpty &&
                                      oldPasswordTextEditingController.text.isNotEmpty){
                                        if(passwordTextEditingController.text == confirmPasswordTextEditingController.text){
-                                      AuthController().changePassword(oldPasswordTextEditingController.text,
-                                       passwordTextEditingController.text, context, SplashScreen());
+                                     return await AuthController().changePassword(oldPasswordTextEditingController.text,
+                                       passwordTextEditingController.text, context, const SplashScreen());
                                     }
                                     else{
-                                      print('Passwords do not match');
+                                      return authError.sink.add('New Password and Confirm Password  do not match');
+                                      //print('Passwords do not match');
                                     }
                                      }
                                      else{
-                                      print('Enter all required fields');
+                                       return authError.sink.add('Enter all required fields');
+                                      //print('Enter all required fields');
                                      }
                                     },
                                   child: Container(

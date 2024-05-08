@@ -1,9 +1,12 @@
 import 'dart:async';
+import 'package:erm_logic/widgets/progress_dialog.dart';
 import 'package:flutter/material.dart';
 
-StreamController<String> loginError = StreamController<String>.broadcast();
+StreamController<String> authError = StreamController<String>.broadcast();
 StreamController riskInfoStream = StreamController.broadcast();
 StreamController<int> settingsPageController = StreamController<int>.broadcast();
+StreamController<int> totalRisks = StreamController<int>.broadcast();
+StreamController riskRatingController = StreamController.broadcast();
 
 var singleRiskData;
 
@@ -11,5 +14,14 @@ var singleRiskData;
   
   String baseUrl = 'http://127.0.0.1:8000';
   
-   
+   Future<dynamic> ShowDialogMethod(c,msg) {
+  return showDialog(
+      context: c,
+      barrierDismissible: false,
+      builder: (BuildContext c) {
+        return ProgressDialog(
+          message: msg,
+        );
+      });
+}
 }
