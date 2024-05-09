@@ -1,14 +1,13 @@
-import 'package:erm/widgets/dropdown_list_tile.dart';
+import 'package:erm/widgets/loading.dart';
+import 'package:erm_logic/risk_register/single_risk_repository.dart';
 import 'package:flutter/material.dart';
 
+TextEditingController nameController = TextEditingController();
+TextEditingController descriptionController = TextEditingController();
 class RiskCausesWidget extends StatefulWidget {
   const RiskCausesWidget({
     super.key,
-    required this.data,
   });
-
-  final List data;
-
   @override
   State<RiskCausesWidget> createState() => _RiskCausesWidgetState();
 }
@@ -17,85 +16,115 @@ class _RiskCausesWidgetState extends State<RiskCausesWidget> {
 
   bool showEditing = false;
 
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width / 3,
-      margin: const EdgeInsets.only(top: 16),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(width: 1, color: Colors.black12),
-          borderRadius: BorderRadius.circular(4)),
-      child: Column(
-        children: [
-           Container(
-      decoration: const BoxDecoration(
-          color: Color.fromARGB(26, 2, 82, 143),
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(4), topRight: Radius.circular(4))),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              (showEditing==false)?'RISK CAUSES':'ADD RISK CAUSE',
-              style: const TextStyle(
-                fontSize: 20,
-                fontFamily: 'BebasNeue',
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 0, 22, 39),
-              ),
-            ),
-            Row(
+    return FutureBuilder(
+      future: SingleRiskRepository().getRiskCausesByRiskId(),
+      builder: (context,snapshot) {
+
+         if(snapshot.connectionState == ConnectionState.waiting){
+           return const Center(child: LoadingWidget());
+         } else if(snapshot.hasError){
+           return const Center(child :Text('Error occured while loading, Please check your network settings.'));
+         }
+      else{
+          return Container(
+          width: MediaQuery.of(context).size.width / 3,
+          margin: const EdgeInsets.only(top: 16),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(width: 1, color: Colors.black12),
+              borderRadius: BorderRadius.circular(4)),
+          child: Column(
+            children: [
+               Container(
+          decoration: const BoxDecoration(
+              color: Color.fromARGB(26, 2, 82, 143),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(4), topRight: Radius.circular(4))),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-            (showEditing==false)?InkWell(
-                  onTap: () {
-                    setState(() {
-                      showEditing = true;
-                    });
-                  },
-                  child: const Icon(
-                    Icons.add,
-                    color: Color.fromARGB(255, 0, 22, 39),
-                  ),
-                ):InkWell(
-                  onTap: () {
-                    setState(() {
-                      showEditing = false;
-                    });
-                  },
-                  child: const Icon(
-                    Icons.close,
+                Text(
+                  (showEditing==false)?'RISK CAUSES':'ADD RISK CAUSE',
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'BebasNeue',
+                    fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 0, 22, 39),
                   ),
                 ),
-              ],
-            )
-          ],
-        ),
-      ),
-    ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Stack(
-              children: [
-                Positioned(child: ConsequencesTable(data: widget.data)),
-                Visibility(
-                  visible: showEditing,
-                  child: const EditConsequences()
-                  )
+                Row(
+                  children: [
+                (showEditing==false)?InkWell(
+                      onTap: () {
+                        setState(() {
+                          showEditing = true;
+                        });
+                      },
+                      child: const Icon(
+                        Icons.add,
+                        color: Color.fromARGB(255, 0, 22, 39),
+                      ),
+                    ):Row(
+                      children: [
+                        InkWell(
+                      onTap: ()async{
+                         await SingleRiskRepository().addRiskCause(context,nameController.text,descriptionController.text);
+                        setState((){
+                          showEditing = false;
+                        });
+                      },
+                      child: const Icon(
+                        Icons.done,
+                        color: Color.fromARGB(255, 0, 22, 39),
+                      ),
+                    ),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              showEditing = false;
+                            });
+                          },
+                          child: const Icon(
+                            Icons.close,
+                            color: Color.fromARGB(255, 0, 22, 39),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                )
               ],
             ),
           ),
-        ],
-      ),
+        ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Stack(
+                  children: [
+                    Positioned(child: RiskCausesTable(data: snapshot.data)),
+                    Visibility(
+                      visible: showEditing,
+                      child: const AddRiskCauses()
+                      )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+}
+      }
     );
   }
 }
 
-class EditConsequences extends StatelessWidget {
-  const EditConsequences({
+class AddRiskCauses extends StatelessWidget {
+  const AddRiskCauses({
     super.key,
   });
 
@@ -107,12 +136,13 @@ class EditConsequences extends StatelessWidget {
         color: Colors.white,
         child:  Column(children: [
          TextField(
+          controller: nameController,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius:BorderRadius.circular(8),
                   borderSide: const BorderSide(color: Colors.transparent,width: .1)
                   ),
-                label: const Text('Risk Cause Name'),
+                label: const Text('Risk Cause'),
                 border: InputBorder.none,
                  filled: true,
                 fillColor: const Color.fromARGB(8, 0, 0, 0),
@@ -121,6 +151,7 @@ class EditConsequences extends StatelessWidget {
             const SizedBox(height: 5,),
           Expanded(
             child: TextField(
+              controller: descriptionController,
               maxLines: 4,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -140,16 +171,27 @@ class EditConsequences extends StatelessWidget {
   }
 }
 
-class ConsequencesTable extends StatelessWidget {
-  const ConsequencesTable({
+class RiskCausesTable extends StatelessWidget {
+  const RiskCausesTable({
     super.key,
     required this.data,
   });
 
-  final List data;
+  final  data;
 
   @override
   Widget build(BuildContext context) {
+     List<DataRow> rows = [];
+          for (var item in data){
+   
+            DataRow row =  tableRow(
+              item,
+              item['cause'],
+              item['description'],
+              item['id']
+              );
+            rows.add(row);
+          }
     return Container(
       margin: const EdgeInsets.only(top: 16),
       decoration: BoxDecoration(
@@ -178,36 +220,44 @@ class ConsequencesTable extends StatelessWidget {
                   color: Colors.grey,
                   fontSize: 14),
             )),
-            DataColumn(
-                label: Text(
-              '',
-            )),
           ],
           // Rows definition
-          rows: data
-              .asMap()
-              .entries
-              .map((entry) => DataRow(
-                    cells: [
-                      DataCell(Text(entry.value['name']!,style: const TextStyle(fontSize: 12),)),
-                      DataCell(Text(entry.value['description']!,style: const TextStyle(fontSize: 12),)),
-                      const DataCell(
-                        DropDownListTile(),
-                      ),
-                    ],
-                    color: MaterialStateProperty.resolveWith<Color>(
-                        (Set<MaterialState> states) {
-                      // Check if the row index is even
-                      if (entry.key % 2 == 0) {
-                        return Colors.grey[200]!; // Light grey color
-                      }
-                      return Colors
-                          .white; // Use default color for odd rows (white)
-                    }),
-                  ))
-              .toList(),
+          rows:rows
         ),
       ),
     );
+  }
+
+  DataRow tableRow(data,name,description,id) {
+    return DataRow(
+                  cells: [
+                    DataCell(InkWell(
+                      onTap: (){
+                    
+                      },
+                      child: Text(
+                        name.toString(),
+                        style: const TextStyle(fontSize: 12),
+                      ),
+                    )),
+                    DataCell(SizedBox(
+                      width: 210,
+                      child: Text(
+                        description.toString(),
+                        style: const TextStyle(fontSize: 12),
+                      ),
+                    )),
+                   
+                  ],
+                  color: MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                    // Check if the row index is even
+                    if (id % 2 == 0) {
+                      return Colors.grey[200]!; // Light grey color
+                    }
+                    return Colors
+                        .white; // Use default color for odd rows (white)
+                  }),
+                );
   }
 }

@@ -38,8 +38,8 @@ class _RiskExposureWidgetState extends State<RiskExposureWidget> {
    builder: (context,snapshot){
 
     if(snapshot.hasData){
-      riskImpactController.text = snapshot.data['risk_impact'].toString();
-      riskExposureController.text = snapshot.data['risk_exposure'].toString();
+      riskImpactController.text = (snapshot.data['risk_impact'] != null)?snapshot.data['risk_impact'].toString():'';
+      riskExposureController.text = (snapshot.data['risk_exposure']!=null)?snapshot.data['risk_exposure'].toString():'';
        return Stack(
       children: [
         Visibility(

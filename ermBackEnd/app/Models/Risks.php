@@ -27,4 +27,8 @@ class Risks extends Model
     public function consequences(){
         return $this->hasMany(RiskConsequence::class,'risk_id','id');
     }
+
+    public function causes(){
+        return $this->hasMany(RiskCause::class,'risk_id','id');
+    }
 }

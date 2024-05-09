@@ -17,7 +17,7 @@ class RiskRatingController extends Controller
             'likelihood' => 'required|string',
             'impact' => 'required|string',
             ]);
-        $riskRating = RiskRating::with('risk')->find($request->risk_id);      
+        $riskRating = RiskRating::where('risk_id',$request->risk_id)->first();      
 
         if ($riskRating) {
             $riskRating->update([
@@ -25,15 +25,16 @@ class RiskRatingController extends Controller
                 'impact' => $request->impact,
                
             ]);
-            return RiskRating::with('risk')->find($request->risk_id);
+          return RiskRating::where('risk_id',$request->risk_id)->first();
 
         } else {
-                RiskRating::create([
+            RiskRating::create([
                 'risk_id' => $request->risk_id ,
                 'added_by' => $request->added_by ,
                 'likelihood' => $request->likelihood ,
                 'impact' => $request->impact , //impact on scale
                 ]);
+            return  RiskRating::where('risk_id',$request->risk_id)->first();
         }
     }
 
@@ -45,27 +46,28 @@ class RiskRatingController extends Controller
             'risk_impact' => 'required|string',
             'risk_exposure' => 'required|string'
             ]);
-        $riskRating = RiskRating::with('risk')->find($request->risk_id);      
+        $riskRating = RiskRating::where('risk_id',$request->risk_id)->first();      
         if ($riskRating) {
            $riskRating->update([
                 'risk_impact' => $request->risk_impact,
                 'risk_exposure' => $request->risk_exposure,
             ]);
 
-            return RiskRating::with('risk')->find($request->risk_id);
+            return RiskRating::where('risk_id',$request->risk_id)->first();
 
         } else {
-             return   RiskRating::create([
+             RiskRating::create([
                 'risk_id' => $request->risk_id ,
                 'added_by' => $request->added_by ,
                 'risk_impact' => $request-> risk_impact, //financial impact
                 'risk_exposure' => $request->risk_exposure , // financial exposure
                 ]);
+            return  RiskRating::where('risk_id',$request->risk_id)->first();
         }
     }
     public function getRiskRating($id){
 
-        $riskRating = RiskRating::find($id);
+        $riskRating = RiskRating::where('risk_id',$id)->first();
 
         if ($riskRating) {
             return $riskRating;

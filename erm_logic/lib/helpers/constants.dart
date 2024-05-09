@@ -8,6 +8,7 @@ StreamController<int> settingsPageController = StreamController<int>.broadcast()
 StreamController<int> totalRisks = StreamController<int>.broadcast();
 StreamController riskRatingController = StreamController.broadcast();
 StreamController riskConsequencesController = StreamController.broadcast();
+StreamController riskCausesController = StreamController.broadcast();
 
 var singleRiskData;
 

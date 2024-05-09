@@ -42,8 +42,8 @@ class RiskRatingColumn extends StatelessWidget {
                 RiskExposureWidget(),
               ],
             ),
-            Consequences(data: data),
-            RiskCausesWidget(data: data)
+            const Consequences(),
+            RiskCausesWidget()
           ])),
     );
   }

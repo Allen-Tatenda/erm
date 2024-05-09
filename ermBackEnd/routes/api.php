@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\RiskCausesController;
 use App\Http\Controllers\RiskConsequenceController;
 use App\Http\Controllers\RiskRatingController;
+use App\Http\Controllers\RiskResponseController;
 use App\Http\Controllers\RisksController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -42,4 +44,14 @@ Route::middleware("auth:sanctum")->group(function () {
 Route::middleware("auth:sanctum")->group(function () {
     Route::get('consequences/{riskId}',[RiskConsequenceController::class,'getConsequencesByRiskId']);
     Route::post('consequence',[RiskConsequenceController::class,'addRiskConsequence']);
+});
+
+Route::middleware("auth:sanctum")->group(function () {
+    Route::get('causes/{riskId}',[RiskCausesController::class,'getCausesByRiskId']);
+    Route::post('cause',[RiskCausesController::class,'addRiskCause']);
+});
+
+Route::middleware("auth:sanctum")->group(function () {
+    Route::get('riskresponse/{riskId}',[RiskResponseController::class,'getRiskResponse']);
+    Route::post('riskresponse',[RiskResponseController::class,'editRiskResponse']);
 });

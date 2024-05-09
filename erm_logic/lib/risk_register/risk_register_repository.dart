@@ -32,7 +32,6 @@ class RiskRegisterRepository{
     var token = await storage.read(key: 'token');
     int id = singleRiskData['id'];
     var url = Uri.parse('${Constants().baseUrl}/api/riskrating/$id');
-
      var headers = {
     'Accept': 'application/json',
     'Authorization': 'Bearer $token'
@@ -60,7 +59,7 @@ class RiskRegisterRepository{
     var myId = await storage.read(key: 'myId');
     int id = singleRiskData['id'];
     var url = Uri.parse('${Constants().baseUrl}/api/riskrating');
-
+    
      var headers = {
     'Accept': 'application/json',
     'Authorization': 'Bearer $token'

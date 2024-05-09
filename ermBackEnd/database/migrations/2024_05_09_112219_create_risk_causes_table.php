@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('risk_ratings', function (Blueprint $table) {
+        Schema::create('risk_causes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('risk_id');
             $table->foreign('risk_id')->references('id')->on('risks');
             $table->unsignedBigInteger('added_by');
             $table->foreign('added_by')->references('id')->on('users');
-            $table->unsignedTinyInteger('likelihood')->nullable(true);;
-            $table->unsignedTinyInteger('impact')->nullable(true);;
-            $table->unsignedBigInteger('risk_impact')->nullable(true);
-            $table->unsignedBigInteger('risk_exposure')->nullable(true);
+            $table->string('cause');
+            $table->text('description')->nullable(true);
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('risk_ratings');
+        Schema::dropIfExists('risk_causes');
     }
 };

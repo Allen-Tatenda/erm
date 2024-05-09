@@ -34,7 +34,7 @@ class ResidualRiskColumn extends StatelessWidget {
             const HeatMap(
               heading: 'INHERENT RISK',
             ),
-            RiskCausesWidget(data: data)
+            RiskCausesWidget()
           ])),
     );
   }

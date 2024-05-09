@@ -36,8 +36,9 @@ class _RiskRatingWidgetState extends State<RiskRatingWidget> {
       stream: riskRatingController.stream,
       builder: (context,snapshot) {
         if(snapshot.hasData){
-          likelihoodController.text = snapshot.data['likelihood'].toString();
-          impactController.text = snapshot.data['impact'].toString();
+
+          likelihoodController.text = (snapshot.data['likelihood']!=null)?snapshot.data['likelihood'].toString():'';
+          impactController.text = (snapshot.data['impact']!=null)?snapshot.data['impact'].toString():'';
         return Stack(
           children: [
             Visibility(
