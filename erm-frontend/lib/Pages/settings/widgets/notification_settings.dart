@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class NotificationSettings extends StatelessWidget {
   const NotificationSettings({
@@ -50,20 +49,20 @@ class NotificationSettings extends StatelessWidget {
              ),
     
        ),
-  Expanded(
+  const Expanded(
     child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
       children: [ 
       Expanded(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.0),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 NotificationGroup(notificationHeader: 'Comments', notificationDescription: 'These are notifications for comments on your posts and replies to your comments.',),
                 NotificationGroup(notificationHeader: 'Tags', notificationDescription: 'These are notifications for when someone tags you in a post or comment.',),
                 NotificationGroup(notificationHeader: 'Reminders', notificationDescription: 'These are notifications to remind you of updates you might have missed.',),
-                const SizedBox(height: 60,)
+                SizedBox(height: 60,)
               ],
             ),
           ),
@@ -82,14 +81,14 @@ class NotificationSettings extends StatelessWidget {
   }
 
 class NotificationGroup extends StatelessWidget {
-   NotificationGroup({
+   const NotificationGroup({
     super.key,
     required this.notificationHeader,
     required this.notificationDescription
   });
 
-  final notificationHeader;
-  final notificationDescription;
+  final String notificationHeader;
+  final String notificationDescription;
 
   @override
   Widget build(BuildContext context) {

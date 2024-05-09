@@ -1,11 +1,9 @@
-import 'package:erm/Pages/main_page.dart';
 import 'package:erm/Pages/riskRegister/single_risk_details/single_risk_details.dart';
 import 'package:erm/widgets/loading.dart';
 import 'package:erm_logic/helpers/constants.dart';
 import 'package:erm_logic/risk_register/risk_register_repository.dart';
 import 'package:flutter/material.dart';
 
-import '../../../widgets/navigation_method.dart';
 
 class RisksTable extends StatefulWidget {
   const RisksTable({
@@ -35,7 +33,7 @@ class _RisksTableState extends State<RisksTable> {
           List<DataRow> rows = [];
           for (var data in snapshot.data){
    
-            DataRow row =  TableRow(
+            DataRow row =  tableRow(
               data,
               data['risk_id'],
               data['priority'],
@@ -118,7 +116,7 @@ class _RisksTableState extends State<RisksTable> {
     
   }
 
-  DataRow TableRow(data,riskId,priority,name,description,owner,id) {
+  DataRow tableRow(data,riskId,priority,name,description,owner,id) {
     return DataRow(
                   cells: [
                     DataCell(Text(riskId.toString(), style: const TextStyle(fontSize: 12),)),
@@ -147,7 +145,7 @@ class _RisksTableState extends State<RisksTable> {
                         style: const TextStyle(fontSize: 12),
                       ),
                     )),
-                    DataCell(Container(
+                    DataCell(SizedBox(
                       width: 210,
                       child: Text(
                         description.toString(),

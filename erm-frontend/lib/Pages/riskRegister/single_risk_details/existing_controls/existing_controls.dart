@@ -2,7 +2,6 @@ import 'package:erm/Pages/riskRegister/single_risk_details/existing_controls/wid
 import 'package:erm/Pages/riskRegister/single_risk_details/existing_controls/widgets/residual_risk_column/residual_risk_column.dart';
 import 'package:flutter/material.dart';
 
-import '../risk_analysis_and_evaluation/widgets/inherent_risk_column/inherent_risk_column.dart';
 
 class ExistingControls extends StatelessWidget {
    ExistingControls({super.key});
@@ -40,6 +39,7 @@ class ExistingControls extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ExistingControlsColum(data: data),

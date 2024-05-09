@@ -4,7 +4,7 @@ import 'package:erm/Pages/riskRegister/single_risk_details/existing_controls/exi
 import 'package:flutter/material.dart';
 
 class LossOfKeyContainedTabBar extends StatefulWidget {
-  LossOfKeyContainedTabBar( {super.key});
+  const LossOfKeyContainedTabBar( {super.key});
 
   @override
   State<LossOfKeyContainedTabBar> createState() =>
@@ -16,7 +16,7 @@ class _LossOfKeyContainedTabBarState extends State<LossOfKeyContainedTabBar> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height - 178,
+      height: MediaQuery.of(context).size.height - 117,
       child: ContainedTabBarView(
         tabs: const [
           Text(
@@ -70,7 +70,7 @@ class _LossOfKeyContainedTabBarState extends State<LossOfKeyContainedTabBar> {
             unselectedLabelColor: Colors.red,
             isScrollable: true),
         views:  [
-          RiskAnalysisAndEvaluation(),
+          const RiskAnalysisAndEvaluation(),
           ExistingControls(),
           Container(color: Colors.red),
           Container(color: Colors.green),

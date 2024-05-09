@@ -16,7 +16,6 @@ class RiskNavInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, widget) {
       var width = MediaQuery.of(context).size.width;
-      print(width);
       if (width < 672) {
 return SizedBox(
       width: (MediaQuery.of(context).size.width / 2) - 32,

@@ -23,4 +23,8 @@ class Risks extends Model
     public function riskOwner(){
         return $this->belongsTo(User::class,'risk_owner_id','id');
     }
+
+    public function consequences(){
+        return $this->hasMany(RiskConsequence::class,'risk_id','id');
+    }
 }

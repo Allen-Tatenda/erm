@@ -16,7 +16,7 @@ class AddRiskModal extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   const Text('Add Risk',style: TextStyle(fontSize: 20,color: Colors.black54),),
-                   Row(
+                   const Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Expanded(child: TextField(decoration: InputDecoration(labelText:'Name'))),
@@ -24,7 +24,7 @@ class AddRiskModal extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height : 10),
-                   Row(
+                   const Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Expanded(child: RiskPriorityDropdown()),
@@ -48,6 +48,8 @@ class AddRiskModal extends StatelessWidget {
 
 
 class RiskPriorityDropdown extends StatefulWidget {
+  const RiskPriorityDropdown({super.key});
+
   @override
   _RiskPriorityDropdownState createState() => _RiskPriorityDropdownState();
 
@@ -58,7 +60,7 @@ class _RiskPriorityDropdownState extends State<RiskPriorityDropdown> {
   int selectedValue = 0;
 
   List<DropdownMenuItem> items = [
-     const DropdownMenuItem(value: 0, child: Text('Risk Priority'),enabled: false,),
+     const DropdownMenuItem(value: 0,enabled: false, child: Text('Risk Priority'),),
         const DropdownMenuItem(value:2 ,child :Text('Option B')),
          const DropdownMenuItem(value :3 ,child :Text ('Option C') ), 
           const DropdownMenuItem (value :4 ,child : Text ('Option D'),),
@@ -77,8 +79,8 @@ class _RiskPriorityDropdownState extends State<RiskPriorityDropdown> {
    
    },
     isExpanded: true,
-    hint: Text('Set Risk Priority'),
-    disabledHint: Text('Set Risk Priority'),
+    hint: const Text('Set Risk Priority'),
+    disabledHint: const Text('Set Risk Priority'),
     alignment: Alignment.bottomCenter,
     icon: const Icon(Icons.arrow_drop_down),
     iconSize: 24,

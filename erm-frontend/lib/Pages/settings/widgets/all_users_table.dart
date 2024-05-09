@@ -25,7 +25,7 @@ class AllUsersTable extends StatelessWidget {
           List<DataRow> rows = [];
           for (var data in snapshot.data){
    
-            DataRow row =  TableRow(
+            DataRow row =  tableRow(
               data,
               data['firstname'],
               data['lastname'],
@@ -111,7 +111,7 @@ class AllUsersTable extends StatelessWidget {
     );
   }
 
-  DataRow TableRow(data,firstname,lastname,email,department,position,id) {
+  DataRow tableRow(data,firstname,lastname,email,department,position,id) {
     return DataRow(
                   cells: [
                     DataCell(Text(firstname.toString(), style: const TextStyle(fontSize: 12),)),
@@ -125,7 +125,7 @@ class AllUsersTable extends StatelessWidget {
                         style: const TextStyle(fontSize: 12),
                       ),
                     )),
-                    DataCell(Container(
+                    DataCell(SizedBox(
                       width: 210,
                       child: Text(
                         department.toString(),

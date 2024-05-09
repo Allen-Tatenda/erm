@@ -16,7 +16,6 @@ class _MobileHomePageState extends State<MobileHomePage> {
       children: [
         LayoutBuilder(builder: (context, widget) {
           var width = MediaQuery.of(context).size.width;
-          print(width);
           if (width < 672) {
             return const SizedBox.shrink();
           }

@@ -22,7 +22,6 @@ class RiskRegisterPage extends StatelessWidget {
             ),
            LayoutBuilder(builder: (context, widget) {
           var width = MediaQuery.of(context).size.width;
-          print(width);
           if (width < 672) {
                    return  Column(
               children: [
@@ -109,7 +108,7 @@ class RiskRegisterPage extends StatelessWidget {
             );
         }),
         
-            RiskRegisterMainContent()
+            const RiskRegisterMainContent()
           ],
         ),
       ),

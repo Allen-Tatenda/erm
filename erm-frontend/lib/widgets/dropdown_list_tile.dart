@@ -10,7 +10,6 @@ class DropDownListTile extends StatefulWidget {
 class _DropDownListTileState extends State<DropDownListTile> {
   @override
   Widget build(BuildContext context) {
-    String title = '';
     String item1 = 'Item1';
     String item2 = 'Item2';
     return PopupMenuButton(
@@ -26,7 +25,6 @@ class _DropDownListTileState extends State<DropDownListTile> {
       ],
       onSelected: (value) => {
         setState(() {
-          title = value;
         })
       },
     );

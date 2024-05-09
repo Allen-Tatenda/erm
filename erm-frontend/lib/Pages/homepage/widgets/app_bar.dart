@@ -12,7 +12,6 @@ class AppBarWidget extends StatelessWidget {
       children: [
         LayoutBuilder(builder: (context, widget) {
           var width = MediaQuery.of(context).size.width;
-          print(width);
           if (width < 672) {
             return const SizedBox.shrink();
           }
@@ -43,7 +42,6 @@ class AppBarWidget extends StatelessWidget {
           children: [
             LayoutBuilder(builder: (context, widget) {
               var width = MediaQuery.of(context).size.width;
-              print(width);
               if (width < 672) {
                 return const SizedBox.shrink();
               }

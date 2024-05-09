@@ -1,11 +1,10 @@
 import 'dart:convert';
 import 'package:erm_logic/helpers/constants.dart';
-import 'package:erm_logic/widgets/progress_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
-final storage = const FlutterSecureStorage();
+const storage = FlutterSecureStorage();
 
 class AuthController{
 
@@ -20,7 +19,7 @@ class AuthController{
       );
 
   Future<dynamic> login(String email,String password,c,Widget page) async{
-     Constants().ShowDialogMethod(c,"Signing in, Please wait...");
+     Constants().showDialogMethod(c,"Signing in, Please wait...");
     var url = Uri.parse('${Constants().baseUrl}/api/auth/login');
 
      var headers = {
@@ -34,7 +33,9 @@ class AuthController{
       
           var data = jsonDecode(response.body);
           var token = data['accessToken'];
+          var myId = data['user']['id'].toString();
           await storage.write(key: 'token', value: token);
+          await storage.write(key: 'myId', value: myId);
           Navigator.pop(c);
          return Navigator.of(c).push(MaterialPageRoute(builder: ((context) => page)));
         }
@@ -102,7 +103,7 @@ Future<dynamic> getSession(c,Widget loggedin,Widget loggedOut,Widget setPassword
 
   Future<dynamic> logout(c,Widget splash) async{
 
-     Constants().ShowDialogMethod(c,"Signing out, Please wait...");
+     Constants().showDialogMethod(c,"Signing out, Please wait...");
 
      var token = await storage.read(key: 'token');
   var url = Uri.parse('${Constants().baseUrl}/api/auth/logout');
@@ -126,7 +127,7 @@ Future<dynamic> getSession(c,Widget loggedin,Widget loggedOut,Widget setPassword
 
 Future<dynamic> changePassword(String oldPassword,String newPassword,c,splash) async{
 
-    Constants().ShowDialogMethod(c,"Changing Password, Please wait...");
+    Constants().showDialogMethod(c,"Changing Password, Please wait...");
 
       var token = await storage.read(key: 'token');
       var url = Uri.parse('${Constants().baseUrl}/api/auth/password');

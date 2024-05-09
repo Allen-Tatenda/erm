@@ -3,12 +3,12 @@ import 'package:erm/Pages/riskRegister/widgets/overall_risk_analysis.dart';
 import 'package:erm/Pages/riskRegister/widgets/risk_by_division/risk_by_division.dart';
 import 'package:erm/Pages/riskRegister/widgets/risk_reports/risk_reports.dart';
 import 'package:erm/Pages/riskRegister/widgets/risks_table.dart';
-import 'package:erm/widgets/dropdown_listTile.dart';
+import 'package:erm/widgets/dropdown_list_tile.dart';
 import 'package:erm/Pages/riskRegister/widgets/heat_map.dart';
 import 'package:flutter/material.dart';
 
 class RiskRegisterMainContent extends StatefulWidget {
-  RiskRegisterMainContent({super.key});
+  const RiskRegisterMainContent({super.key});
 
   @override
   State<RiskRegisterMainContent> createState() => _RiskRegisterMainContentState();
@@ -64,7 +64,7 @@ class _RiskRegisterMainContentState extends State<RiskRegisterMainContent> {
                                 color: Colors.grey.shade600,
                                                            ),
                              ),
-                             AddRiskModal(),
+                             const AddRiskModal(),
                             Icon(
                               Icons.search,
                               color: Colors.grey.shade600,
@@ -83,7 +83,7 @@ class _RiskRegisterMainContentState extends State<RiskRegisterMainContent> {
                       )
                     ],
                   ),
-                  RisksTable(),
+                  const RisksTable(),
                 ],
               ),
             ),

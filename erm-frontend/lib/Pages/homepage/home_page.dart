@@ -1,6 +1,5 @@
 import 'package:erm/Pages/homepage/widgets/hero.dart';
 import 'package:erm/Pages/homepage/widgets/navigation.dart';
-import 'package:erm/widgets/loading.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {

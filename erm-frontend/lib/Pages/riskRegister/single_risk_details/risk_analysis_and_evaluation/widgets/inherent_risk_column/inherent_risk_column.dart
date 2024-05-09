@@ -1,3 +1,4 @@
+import 'package:erm/Pages/riskRegister/single_risk_details/risk_analysis_and_evaluation/widgets/inherent_risk_column/risk_response.dart';
 import 'package:erm/Pages/riskRegister/single_risk_details/risk_analysis_and_evaluation/widgets/risk_rating_column/widgets/risk_causes.dart';
 import 'package:erm/Pages/riskRegister/widgets/heat_map.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class InherentRiskColumn extends StatelessWidget {
             const HeatMap(
               heading: 'INHERENT RISK',
             ),
-            RiskCausesWidget(data: data)
+            RiskResponseWidget(data: data)
           ])),
     );
   }

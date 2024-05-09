@@ -22,7 +22,6 @@ class Entrance extends StatefulWidget {
   List myPages = [
   "HOME", 
  "RISK REGISTER",
- "Loss of Key Employee"
   ];
 
 class _EntranceState extends State<Entrance> {
@@ -111,7 +110,7 @@ class _EntranceState extends State<Entrance> {
                                 leading: const Icon(Icons.settings,size: 25,color: Colors.blue,),
                             title: const Text('SETTINGS'),
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SettingsPage()));
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const SettingsPage()));
                             },
                           ),
                         ListTile(

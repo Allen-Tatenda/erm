@@ -2,14 +2,12 @@ import 'package:erm/Pages/settings/widgets/user_settings.dart';
 import 'package:erm/Pages/settings/widgets/my_profile_page.dart';
 import 'package:erm/Pages/settings/widgets/password_settings.dart';
 import 'package:erm_logic/helpers/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'widgets/notification_settings.dart';
 
 class SettingsPage extends StatefulWidget {
-   SettingsPage({super.key});
+   const SettingsPage({super.key});
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();

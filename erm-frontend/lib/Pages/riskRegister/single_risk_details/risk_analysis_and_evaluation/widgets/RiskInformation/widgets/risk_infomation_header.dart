@@ -1,13 +1,13 @@
-import 'package:erm/widgets/dropdown_listTile.dart';
+import 'package:erm/widgets/dropdown_list_tile.dart';
 import 'package:flutter/material.dart';
 
 class RiskInformationHeader extends StatefulWidget {
-   RiskInformationHeader({
+   const RiskInformationHeader({
     super.key,
     required this.heading, required this.logic,
   });
   final String heading;
-   bool logic;
+   final bool logic;
 
   @override
   State<RiskInformationHeader> createState() => _RiskInformationHeaderState();
@@ -42,7 +42,6 @@ class _RiskInformationHeaderState extends State<RiskInformationHeader> {
                   onTap: (){
                     setState(() {
                       showEditing = true;
-                      print(showEditing);
                     });
                   },
                   child: const Icon(

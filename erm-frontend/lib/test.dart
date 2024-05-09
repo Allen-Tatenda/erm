@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Test extends StatelessWidget {
+  const Test({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: DataTable(
-        columns: [
+        columns: const [
           DataColumn(label: Text('Fixed Column')),
           DataColumn(label: Text('Column A')),
           DataColumn(label: Text('Column B')),
@@ -15,7 +17,7 @@ class Test extends StatelessWidget {
           DataColumn(label: Text('Column E')),
           DataColumn(label: Text('Last Fixed Column'))
         ],
-        rows:[
+        rows:const [
            DataRow(cells:[
              DataCell(Text("Data")),
              DataCell(Text("Data")),

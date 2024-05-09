@@ -7,6 +7,7 @@ StreamController riskInfoStream = StreamController.broadcast();
 StreamController<int> settingsPageController = StreamController<int>.broadcast();
 StreamController<int> totalRisks = StreamController<int>.broadcast();
 StreamController riskRatingController = StreamController.broadcast();
+StreamController riskConsequencesController = StreamController.broadcast();
 
 var singleRiskData;
 
@@ -14,7 +15,7 @@ var singleRiskData;
   
   String baseUrl = 'http://127.0.0.1:8000';
   
-   Future<dynamic> ShowDialogMethod(c,msg) {
+   Future<dynamic> showDialogMethod(c,msg) {
   return showDialog(
       context: c,
       barrierDismissible: false,

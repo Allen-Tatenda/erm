@@ -50,19 +50,14 @@ class MyPieChartState extends State<MyPieChart> {
       const Color.fromRGBO(254, 154, 92, 1),
     ]
   ];
-  final bool _showCenterText = true;
-  final bool _showCenterWidget = true;
-  final double _ringStrokeWidth = 32;
+
   final double _chartLegendSpacing = 32;
 
   final bool _showLegendsInRow = false;
-  final bool _showLegends = true;
-  final bool _showLegendLabel = false;
 
   final bool _showChartValueBackground = true;
   final bool _showChartValues = true;
   final bool _showChartValuesInPercentage = false;
-  final bool _showChartValuesOutside = false;
 
   final bool _showGradientColors = false;
 
@@ -113,7 +108,6 @@ class MyPieChartState extends State<MyPieChart> {
 String header = widget.header;
      return LayoutBuilder(builder: (context, widget) {
       var width = MediaQuery.of(context).size.width;
-      print(width);
       if (width < 672) {
        return SizedBox(
       width: (MediaQuery.of(context).size.width / 2) - 32,

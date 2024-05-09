@@ -32,7 +32,6 @@ class _NavigationCardWidgetState extends State<NavigationCardWidget> {
         },
         child: LayoutBuilder(builder: (context, w) {
           var width = MediaQuery.of(context).size.width;
-          print(width);
           if (width < 672) {
             return SizedBox(
               width: MediaQuery.of(context).size.width / 2 - 20,

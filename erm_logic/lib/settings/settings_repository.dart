@@ -9,7 +9,7 @@ class SettingsRepository{
 
   Future addUser(c,firstname,lastname,username,email,phone,position,department)async{
  
-    Constants().ShowDialogMethod(c,"Creating user, Please wait...");
+    Constants().showDialogMethod(c,"Creating user, Please wait...");
     var url = Uri.parse('${Constants().baseUrl}/api/auth/register');
 
      var headers = {

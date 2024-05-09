@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     
-    AuthController().splashScreen(context, const Entrance(), LoginPage(),SetPasswordScreen());
+    AuthController().splashScreen(context, const Entrance(), const LoginPage(),const SetPasswordScreen());
 
   }
 

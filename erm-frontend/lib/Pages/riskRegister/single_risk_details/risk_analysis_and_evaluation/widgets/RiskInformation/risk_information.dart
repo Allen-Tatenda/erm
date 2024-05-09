@@ -2,10 +2,10 @@ import 'package:erm/Pages/riskRegister/single_risk_details/risk_analysis_and_eva
 import 'package:erm_logic/helpers/constants.dart';
 import 'package:flutter/material.dart';
 
-import 'widgets/risk-infomation_header.dart';
+import 'widgets/risk_infomation_header.dart';
 
 class RiskInformation extends StatelessWidget {
-  RiskInformation({
+  const RiskInformation({
     super.key,
   });
   
@@ -23,7 +23,7 @@ class RiskInformation extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             RiskInformationHeader(
+             const RiskInformationHeader(
               heading: 'RISK INFORMATION',
               logic: true,
             ),

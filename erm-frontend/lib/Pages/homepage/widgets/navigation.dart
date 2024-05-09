@@ -1,4 +1,4 @@
-import 'package:erm/widgets/navigation-card_widget.dart';
+import 'package:erm/widgets/navigation_card_widget.dart';
 import 'package:flutter/material.dart';
 
 class NavigationWidget extends StatelessWidget {
@@ -59,7 +59,6 @@ class NavigationWidget extends StatelessWidget {
         ),
         LayoutBuilder(builder: (context, widget) {
           var width = MediaQuery.of(context).size.width;
-          print(width);
           if (width < 672) {
             return SizedBox(
               height: MediaQuery.of(context).size.height - 50,

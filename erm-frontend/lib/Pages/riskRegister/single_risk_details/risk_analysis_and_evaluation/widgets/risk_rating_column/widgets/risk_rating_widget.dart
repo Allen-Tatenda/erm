@@ -1,8 +1,9 @@
+import 'package:erm/widgets/loading.dart';
 import 'package:erm_logic/helpers/constants.dart';
 import 'package:erm_logic/risk_register/risk_register_repository.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../../widgets/dropdown_listTile.dart';
+import '../../../../../../../widgets/dropdown_list_tile.dart';
 
 import '../../RiskInformation/widgets/risk_info_subheading_text.dart';
 
@@ -20,9 +21,11 @@ class _RiskRatingWidgetState extends State<RiskRatingWidget> {
 
   bool isEditingShown = false;
 
+  TextEditingController likelihoodController = TextEditingController();
+  TextEditingController impactController = TextEditingController();
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     RiskRegisterRepository().getRiskRating();
   }
@@ -32,7 +35,9 @@ class _RiskRatingWidgetState extends State<RiskRatingWidget> {
     return StreamBuilder(
       stream: riskRatingController.stream,
       builder: (context,snapshot) {
-        print(singleRiskData);
+        if(snapshot.hasData){
+          likelihoodController.text = snapshot.data['likelihood'].toString();
+          impactController.text = snapshot.data['impact'].toString();
         return Stack(
           children: [
             Visibility(
@@ -75,7 +80,6 @@ class _RiskRatingWidgetState extends State<RiskRatingWidget> {
                       onTap: (){
                         setState(() {
                           showEditing = true;
-                          print(showEditing);
                         });
                       },
                       child: const Icon(
@@ -89,12 +93,12 @@ class _RiskRatingWidgetState extends State<RiskRatingWidget> {
               ],
             ),
           ),
-        ),
-                        const RiskInfoSubHeadingAndText(
-                            subheading: 'RISK IMPACT (\$)', text: '40,000 \$'),
-                        const RiskInfoSubHeadingAndText(
-                            subheading: 'RISK EXPOSURE (\$)', text: '40,0000 \$'),
-                      ],
+          ),
+          RiskInfoSubHeadingAndText(
+              subheading: 'LIKELIHOOD', text: (snapshot.data['likelihood'] != null)? snapshot.data['likelihood'].toString():''),
+          RiskInfoSubHeadingAndText(
+              subheading: 'iMPACT', text :(snapshot.data['impact'] != null)?snapshot.data['impact'].toString():''),
+  ],
                     ),
                   ),
                 ),
@@ -130,7 +134,15 @@ class _RiskRatingWidgetState extends State<RiskRatingWidget> {
                                   });
                                 },
                                 child: const Icon(Icons.close)),
-                              const Icon(Icons.done)
+                              InkWell(
+                                onTap: ()async{
+                                  await RiskRegisterRepository().editRiskRating(context,likelihoodController.text,impactController.text);
+                                   setState(() {
+                                      showEditing = false;
+                                  });
+                                },
+                                child: const Icon(Icons.done)
+                                )
                             ],
                           ),
                           const Text(
@@ -141,11 +153,11 @@ class _RiskRatingWidgetState extends State<RiskRatingWidget> {
                       fontWeight: FontWeight.bold,
                       color: Colors.grey),
                               ),
-                          const SizedBox(
+                         SizedBox(
                             height: 40,
                             child: TextField(
-                              
-                              decoration: InputDecoration(
+                              controller: likelihoodController,
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(4)))
                               ),
                             ),
@@ -160,11 +172,11 @@ class _RiskRatingWidgetState extends State<RiskRatingWidget> {
                       fontWeight: FontWeight.bold,
                       color: Colors.grey),
                               ),
-                          const SizedBox(
+                           SizedBox(
                             height: 40,
                             child: TextField(
-                              
-                              decoration: InputDecoration(
+                              controller: impactController,
+                              decoration: const InputDecoration(
                                 border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(4)))
                               ),
                             ),
@@ -178,6 +190,9 @@ class _RiskRatingWidgetState extends State<RiskRatingWidget> {
                     ),
           ],
         );
+        }
+
+        return const LoadingWidget();
       }
     );
   }

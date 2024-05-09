@@ -2,16 +2,17 @@ import 'package:erm/Auth/splash_screen.dart';
 import 'package:erm_logic/auth/auth_controller.dart';
 import 'package:erm_logic/helpers/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class SetPasswordScreen extends StatelessWidget {
- SetPasswordScreen({super.key});
+ const SetPasswordScreen({super.key});
+
+ 
+  @override
+  Widget build(BuildContext context) {
 
   TextEditingController oldPasswordTextEditingController = TextEditingController();
   TextEditingController passwordTextEditingController = TextEditingController();
   TextEditingController confirmPasswordTextEditingController = TextEditingController();
-  @override
-  Widget build(BuildContext context) {
     
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 245, 241, 241),
