@@ -39,6 +39,10 @@ class AuthController{
           Navigator.pop(c);
          return Navigator.of(c).push(MaterialPageRoute(builder: ((context) => page)));
         }
+        else if(response.statusCode == 500){
+          Navigator.pop(c);
+          return authError.sink.add('Can not Establish Database Connection.');
+        }
 
     else{
        var data = jsonDecode(response.body);

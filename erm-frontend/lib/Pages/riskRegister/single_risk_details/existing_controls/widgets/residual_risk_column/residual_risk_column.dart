@@ -30,8 +30,8 @@ class ResidualRiskColumn extends StatelessWidget {
       child: SizedBox(
           width: (MediaQuery.of(context).size.width / 3) - 36,
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const HeatMap(
+              const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            HeatMap(
               heading: 'INHERENT RISK',
             ),
             RiskCausesWidget()

@@ -1,4 +1,4 @@
-import 'package:erm/widgets/loading.dart';
+import 'package:erm/widgets/shimmer_box.dart';
 import 'package:erm_logic/risk_register/single_risk_repository.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +24,7 @@ class _RiskCausesWidgetState extends State<RiskCausesWidget> {
       builder: (context,snapshot) {
 
          if(snapshot.connectionState == ConnectionState.waiting){
-           return const Center(child: LoadingWidget());
+           return const Center(child: ShimmerBoxWidget(height: 180,));
          } else if(snapshot.hasError){
            return const Center(child :Text('Error occured while loading, Please check your network settings.'));
          }

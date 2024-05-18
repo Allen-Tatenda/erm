@@ -34,15 +34,15 @@ class RiskRatingColumn extends StatelessWidget {
       child: SizedBox(
           width: (MediaQuery.of(context).size.width / 3) - 36,
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const Row(
+              const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [             
                 RiskRatingWidget(),
                 RiskExposureWidget(),
               ],
             ),
-            const Consequences(),
+            Consequences(),
             RiskCausesWidget()
           ])),
     );

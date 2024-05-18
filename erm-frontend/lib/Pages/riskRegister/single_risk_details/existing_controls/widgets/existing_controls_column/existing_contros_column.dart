@@ -48,7 +48,7 @@ class _ExistingControlsColumState extends State<ExistingControlsColum> {
                     )),
                     DataColumn(
                         label: Text(
-                      'CONTROL DESCRIPTION',
+                      'DESCRIPTION',
                       style: TextStyle(
                           fontWeight: FontWeight.w900,
                           color: Colors.grey,
@@ -56,7 +56,7 @@ class _ExistingControlsColumState extends State<ExistingControlsColum> {
                     )),
                      DataColumn(
                         label: Text(
-                      'CONTROL OWNER',
+                      'OWNER',
                       style: TextStyle(
                           fontWeight: FontWeight.w900,
                           color: Colors.grey,
@@ -91,22 +91,19 @@ class _ExistingControlsColumState extends State<ExistingControlsColum> {
                         
                             cells: [
                               
-                              DataCell(SizedBox(
-                                 width:( MediaQuery.of(context).size.width -500)/4,
-                                child: Text(entry.value['name']!)),),
-                              DataCell(SizedBox(
-                                width:( MediaQuery.of(context).size.width -500)/4,
-                                child: Text(entry.value['description']!))),
-                              DataCell(SizedBox(
-                                width:( MediaQuery.of(context).size.width -500)/4,
-                                child: Text(entry.value['owner']!))),
+                              DataCell(SizedBox(width: 100,
+                                child: Text(entry.value['name']!,style: const TextStyle(fontSize: 12),)),),
+                              DataCell(SizedBox(width: 200, child: Text(entry.value['description']!,style: const TextStyle(fontSize: 12),))),
+                              DataCell(SizedBox(width: 100,
+                                child: Text(entry.value['owner']!,style: const TextStyle(fontSize: 12),))),
                               DataCell(
-                                SizedBox(
-                                   width:( MediaQuery.of(context).size.width -500)/4,
-                                  child: Text(entry.value['effectiveness']!))),
-                              DataCell(Text(entry.value['control_type']!)),
+                                SizedBox(width: 100,
+                                  child: Text(entry.value['effectiveness']!,style: const TextStyle(fontSize: 12),))),
+                              DataCell(SizedBox(width: 100,
+                                child: Text(entry.value['control_type']!,style: const TextStyle(fontSize: 12),))),
                               const DataCell(                             
-                                DropDownListTile(),
+                                SizedBox(width: 20,
+                                  child: DropDownListTile()),
                               ),
                             ],
                             color: MaterialStateProperty.resolveWith<Color>(

@@ -132,7 +132,7 @@ class PasswordSettings extends StatelessWidget {
                                  const Text("****************",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),
                                  ),
                                           InkWell(
-                                            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SetPasswordScreen())),
+                                            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const SetPasswordScreen())),
                                             child: const Icon(Icons.edit,size: 25,color: Colors.black26,)
                                           ),
                                ],

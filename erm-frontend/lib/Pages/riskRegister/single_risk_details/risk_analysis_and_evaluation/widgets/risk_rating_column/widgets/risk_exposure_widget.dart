@@ -1,4 +1,4 @@
-import 'package:erm/widgets/loading.dart';
+import 'package:erm/widgets/shimmer_box.dart';
 import 'package:erm_logic/helpers/constants.dart';
 import 'package:erm_logic/risk_register/risk_register_repository.dart';
 import 'package:flutter/material.dart';
@@ -97,9 +97,9 @@ class _RiskExposureWidgetState extends State<RiskExposureWidget> {
       ),
     ),
     RiskInfoSubHeadingAndText(
-        subheading: 'RISK IMPACT (\$)', text:(snapshot.data['risk_impact'] != null)? snapshot.data['risk_impact'].toString():''),
+        subheading: 'RISK IMPACT (\$)', text:(snapshot.data['risk_impact'] != null)? '\$ ${snapshot.data['risk_impact'].toString()}':''),
     RiskInfoSubHeadingAndText(
-        subheading: 'RISK EXPOSURE (\$)', text:(snapshot.data['risk_exposure'] != null)? snapshot.data['risk_exposure'].toString():''),
+        subheading: 'RISK EXPOSURE (\$)', text:(snapshot.data['risk_exposure'] != null)? '\$ ${snapshot.data['risk_exposure'].toString()}':''),
                   ],
                 ),
               ),
@@ -190,7 +190,7 @@ class _RiskExposureWidgetState extends State<RiskExposureWidget> {
     );
     }
 
-    return const LoadingWidget();
+    return const Expanded(child: ShimmerBoxWidget(height: 180,));
    }
    );
   }

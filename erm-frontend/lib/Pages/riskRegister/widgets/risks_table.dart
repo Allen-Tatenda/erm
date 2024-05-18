@@ -130,15 +130,12 @@ class _RisksTableState extends State<RisksTable> {
                     )),
                     DataCell(InkWell(
                       onTap: (){
-                        //print(data);
                         setState(() {
                           singleRiskData = data;
                           riskInfoStream.sink.add(data);
                         });
 
                         Navigator.push(context, MaterialPageRoute(builder: ((context) =>  SingleRiskDetails(data: data,))));
-                          // activeTab = 2;
-                          // navigationStream.sink.add(activeTab);
                       },
                       child: Text(
                         name.toString(),

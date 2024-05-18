@@ -13,7 +13,6 @@ dependencies:
   http: ^1.2.1
   plugin_platform_interface: ^2.0.2
   flutter_secure_storage: ^9.0.0
-  flutter_styled_toast: ^2.2.1
 
 dev_dependencies:
   flutter_test:

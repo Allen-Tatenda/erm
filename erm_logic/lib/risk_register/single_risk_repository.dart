@@ -7,6 +7,31 @@ import 'package:http/http.dart' as http;
 
 class SingleRiskRepository{
 
+   Future getRiskById() async{
+    var token = await storage.read(key: 'token');
+    int id = singleRiskData['id'];
+    var url = Uri.parse('${Constants().baseUrl}/api/risks/$id');
+
+     var headers = {
+    'Accept': 'application/json',
+    'Authorization': 'Bearer $token'
+  };
+      http.Response response;
+      response = await http.get(url,headers:headers);
+
+        if(response.statusCode == 200){
+          var data = jsonDecode(response.body);
+          riskConsequencesController.sink.add(data);
+          return data;
+        }
+    else{
+       var data = jsonDecode(response.body);
+       return data;
+ 
+    }
+       
+  }
+
    Future getConsequencesByRiskId() async{
     var token = await storage.read(key: 'token');
     int id = singleRiskData['id'];

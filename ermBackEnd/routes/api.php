@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\ExistingControlsController;
 use App\Http\Controllers\RiskCausesController;
 use App\Http\Controllers\RiskConsequenceController;
 use App\Http\Controllers\RiskRatingController;
@@ -54,4 +55,10 @@ Route::middleware("auth:sanctum")->group(function () {
 Route::middleware("auth:sanctum")->group(function () {
     Route::get('riskresponse/{riskId}',[RiskResponseController::class,'getRiskResponse']);
     Route::post('riskresponse',[RiskResponseController::class,'editRiskResponse']);
+});
+
+Route::middleware("auth:sanctum")->group(function () {
+    Route::get('existingcontrols/{riskId}',[ExistingControlsController::class,'getExistingControlsByRiskId']);
+    Route::post('addexistingcontrol',[ExistingControlsController::class,'addExistingControl']);
+    Route::post('editexistingcontrol',[ExistingControlsController::class,'editExistingControl']);
 });
