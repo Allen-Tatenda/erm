@@ -1,5 +1,4 @@
 import 'package:erm/widgets/loading.dart';
-import 'package:erm_logic/settings/settings_repository.dart';
 import 'package:flutter/material.dart';
 
 class MyProfilePage extends StatelessWidget {
@@ -30,7 +29,7 @@ class MyProfilePage extends StatelessWidget {
              ),
       
              child: FutureBuilder(
-              future: SettingsRepository().getMyProfile(),
+              future: null,
                builder: (context,snapshot) {
                 if(snapshot.hasData){
                                    return Row(
@@ -51,35 +50,35 @@ class MyProfilePage extends StatelessWidget {
                               padding: const EdgeInsets.all(16.0),
                               child: Column(
                                 children: [
-                                   Row(
+                                   const Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                  const Expanded(child: Text("Name:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
-                                   Expanded(child: Text("${snapshot.data['firstname']} ${snapshot.data['lastname']}",style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
+                                  Expanded(child: Text("Name:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
+                                   Expanded(child: Text("Allen Ndiva",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
                               ],
                               ),
                               Divider(color: Colors.black.withOpacity(.1),),
-                                Row(
+                                const Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                  const Expanded(child: Text("Position:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
-                                   Expanded(child: Text("${snapshot.data['designation']}",style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
+                                  Expanded(child: Text("Position:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
+                                   Expanded(child: Text("Manager",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
                               ],
                               ),
                                 Divider(color: Colors.black.withOpacity(.1),),
-                                Row(
+                                const Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                  const Expanded(child: Text("Department:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
-                                   Expanded(child: Text("${snapshot.data['department']}",style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
+                                  Expanded(child: Text("Department:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
+                                   Expanded(child: Text("Floors",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
                               ],
                               ),
                                  Divider(color: Colors.black.withOpacity(.1),),
-                               Row(
+                               const Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                  const Expanded(child: Text("Email:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
-                                  Expanded(child: Text("${snapshot.data['email']}",style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
+                                  Expanded(child: Text("Email:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black87),)),
+                                  Expanded(child: Text("anjiva7@gmail.com",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w800,color:Colors.black54),))         
                               ],
                               ),
                                 Divider(color: Colors.black.withOpacity(.1),),

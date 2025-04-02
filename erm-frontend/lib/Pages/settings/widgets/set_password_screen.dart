@@ -1,6 +1,4 @@
-import 'package:erm/Auth/splash_screen.dart';
-import 'package:erm_logic/auth/auth_controller.dart';
-import 'package:erm_logic/helpers/constants.dart';
+import 'package:erm/Pages/main_page.dart';
 import 'package:flutter/material.dart';
 
 class SetPasswordScreen extends StatelessWidget {
@@ -44,7 +42,7 @@ class SetPasswordScreen extends StatelessWidget {
                               children: [
                               const SizedBox(height: 10,),
                               StreamBuilder<String>(
-                                stream: authError.stream,
+                                stream: null,
                                 builder: (context, snapshot) {
                                  if(snapshot.hasData){
                                    return Row(
@@ -98,22 +96,7 @@ class SetPasswordScreen extends StatelessWidget {
         
                                 InkWell(
                                   onTap: ()async{
-                                   if(passwordTextEditingController.text.isNotEmpty &&
-                                    confirmPasswordTextEditingController.text.isNotEmpty &&
-                                     oldPasswordTextEditingController.text.isNotEmpty){
-                                       if(passwordTextEditingController.text == confirmPasswordTextEditingController.text){
-                                     return await AuthController().changePassword(oldPasswordTextEditingController.text,
-                                       passwordTextEditingController.text, context, const SplashScreen());
-                                    }
-                                    else{
-                                      return authError.sink.add('New Password and Confirm Password  do not match');
-                                      //print('Passwords do not match');
-                                    }
-                                     }
-                                     else{
-                                       return authError.sink.add('Enter all required fields');
-                                      //print('Enter all required fields');
-                                     }
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>const Entrance()));
                                     },
                                   child: Container(
                                     width: double.infinity,

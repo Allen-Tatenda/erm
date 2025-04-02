@@ -1,5 +1,4 @@
 import 'package:erm/Pages/settings/widgets/add_user_page.dart';
-import 'package:erm/Pages/settings/widgets/all_users_table.dart';
 import 'package:flutter/material.dart';
 
 class AllUsersPage extends StatefulWidget {
@@ -114,7 +113,8 @@ class _AllUsersPageState extends State<AllUsersPage> {
           color: Colors.white,
           border: Border.all(width: 1, color: Colors.black12),
           borderRadius: BorderRadius.circular(4)),
-      child: (showAddUser == false)?AllUsersTable(data: data):const AddUserView()
+      //child: (showAddUser == false)?AllUsersTable(data: data):const AddUserView()
+      child:const AddUserView()
 
     )
         ),

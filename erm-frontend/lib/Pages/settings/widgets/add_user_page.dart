@@ -1,5 +1,3 @@
-import 'package:erm_logic/helpers/constants.dart';
-import 'package:erm_logic/settings/settings_repository.dart';
 import 'package:flutter/material.dart';
 
 class AddUserView extends StatefulWidget {
@@ -27,29 +25,7 @@ class _AddUserViewState extends State<AddUserView> {
       child: Column(
 children: [
   const SizedBox(height: 20,),
-    StreamBuilder<String>(
-        stream: authError.stream,
-        builder: (context, snapshot) {
-          if(snapshot.hasData){
-            return Padding(
-              padding: const EdgeInsets.only(left: 8),
-              child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(snapshot.data.toString(),style: const TextStyle(
-                  fontWeight: FontWeight.w400,
-                  color: Colors.redAccent
-                  
-                  ),
-                  textAlign: TextAlign.start,
-                  ),
-                ],
-              ),
-            );
-          }
-          return const SizedBox.shrink();
-        }
-      ),
+    
           const SizedBox(height: 20,),
            Row(
             children: [
@@ -149,8 +125,7 @@ children: [
               InkWell(
 
                 onTap: (){
-                  SettingsRepository().addUser(context, firstnameController.text, lastnameController.text, usernameController.text,
-                   emailController.text,phoneController.text, positionController.text, departmentController.text);
+                 
                 },
 
                           child: Container(

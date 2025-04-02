@@ -1,10 +1,7 @@
-import 'package:erm/Auth/splash_screen.dart';
 import 'package:erm/Pages/homepage/responsive.dart';
 import 'package:erm/Pages/homepage/widgets/app_bar.dart';
-import 'package:erm/Pages/riskRegister/risk_register.dart';
 import 'package:erm/Pages/settings/settings.dart';
 import 'package:erm/widgets/navigation_method.dart';
-import 'package:erm_logic/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
 
 class Entrance extends StatefulWidget {
@@ -17,7 +14,7 @@ class Entrance extends StatefulWidget {
     int activeTab = 0;
   final List _barWidgets = [
    const HomePageResponsive(),
-   const RiskRegisterPage(),
+   //const RiskRegisterPage(),
   ];
   List myPages = [
   "HOME", 
@@ -118,7 +115,6 @@ class _EntranceState extends State<Entrance> {
                             title: const Text('SIGNOUT'),
                             onTap: () {
                               setState(() {
-                            AuthController().logout(context,const SplashScreen());
                           });
                             },
                           ),
